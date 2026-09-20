@@ -12,7 +12,7 @@
 | **Nama Lengkap** | Kelvin Yohanes Putra |
 | **NIM** | 12S24018 |
 | **Program Studi** | Sistem Informasi |
-| **Mata Kuliah** | Pengembangan Pasar Web (PPW 2026) |
+| **Mata Kuliah** | Pemrograman & Pengujian Aplikasi Web (PPW 2026) |
 | **Institusi** | Institut Teknologi Del |
 
 ---
