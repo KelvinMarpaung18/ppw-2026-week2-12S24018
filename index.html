@@ -4,254 +4,1098 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portofolio & Layanan - Kelvin Yohanes Putra</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts untuk Tipografi Modern -->
+
+  <!-- 1. BOOTSTRAP 5.3 CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- 2. BOOTSTRAP ICONS (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- 3. GOOGLE FONTS (Plus Jakarta Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- 4. CUSTOM CSS OVERRIDES (Dimuat setelah Bootstrap CSS sesuai Standar Modul) -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Navigation Bar (Glassmorphism Effect) -->
-  <header class="main-header">
-    <div class="logo-container">
-      <span class="logo-badge">KP</span>
-      <span class="brand-name">Kelvin Yohanes Putra</span>
-    </div>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="#about">Tentang</a></li>
-        <li><a href="#portfolio">Portofolio</a></li>
-        <li><a href="#services">Layanan</a></li>
-        <li><a href="https://wa.me/6281361507704" target="_blank" class="nav-cta">Hubungi Saya</a></li>
-      </ul>
+  <!-- ========================================================================
+       HEADER & RESPONSIVE NAVBAR (MODUL REQUIREMENT 2)
+       ======================================================================== -->
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar shadow-sm py-2">
+      <div class="container">
+        <!-- Brand Identity -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#about">
+          <span class="logo-badge">KP</span>
+          <span class="brand-text fw-bold">Kelvin Yohanes Putra</span>
+        </a>
+
+        <!-- Hamburger Toggle Button -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbarCollapse" aria-controls="mainNavbarCollapse" aria-expanded="false" aria-label="Buka navigasi menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible Navigation Items -->
+        <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1">
+            <li class="nav-item">
+              <a class="nav-link active px-3" aria-current="page" href="#about">
+                <i class="bi bi-person-fill me-1 text-primary"></i> Tentang
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#portfolio-cards">
+                <i class="bi bi-grid-fill me-1 text-primary"></i> Proyek
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#academic-recap">
+                <i class="bi bi-table me-1 text-primary"></i> Rekapitulasi
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#sertifikat">
+                <i class="bi bi-award-fill me-1 text-primary"></i> Sertifikat
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#services">
+                <i class="bi bi-envelope-paper-fill me-1 text-primary"></i> Layanan
+              </a>
+            </li>
+            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+              <a class="btn btn-sm btn-contact-nav px-3 py-2 fw-semibold" href="https://wa.me/6281361507704" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-whatsapp me-1"></i> Hubungi Saya
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
   </header>
 
-  <main>
-    
-    <div class="hero-container-wide">
-      <section id="about" class="hero-wide-layout">
-        <div class="hero-content-wrapper">
-          <div class="hero-text-side">
-            <h1 class="hero-title">
-              I'm <span class="highlight-name">Kelvin Yohanes Putra</span>,<br>
-              Information Systems Student & Web Developer
+  <!-- ========================================================================
+       MAIN CONTENT CONTAINER
+       ======================================================================== -->
+  <main class="container py-4">
+
+    <!-- HERO SECTION (GRID 12-KOLOM RESPONSIF) -->
+    <section id="about" class="hero-custom-card mb-4">
+      <div class="p-4 p-md-5">
+        <div class="row align-items-start g-4">
+          <!-- Text Side (col-lg-8) -->
+          <div class="col-12 col-lg-8 order-2 order-lg-1">
+            <div class="d-inline-flex align-items-center gap-2 badge-greeting mb-3">
+              <span class="pulse-dot"></span>
+              <span>Available for Freelance & Academic Projects</span>
+            </div>
+            <h1 class="hero-heading fw-extrabold mb-2">
+              Halo, Saya <span class="text-highlight">Kelvin Yohanes Putra</span> 👋
             </h1>
-            <p class="hero-description">
-              Mahasiswa Sistem Informasi yang memadukan keahlian analisis sistem, perancangan UI/UX, dan front-end development untuk menghadirkan solusi teknologi yang memberikan nilai tambah nyata.
+            <h2 class="h5 text-primary fw-bold mb-3">
+              Mahasiswa Sistem Informasi • UI/UX & Web Developer
+            </h2>
+            <p class="hero-lead text-muted mb-4">
+              Mahasiswa S1 Sistem Informasi di Institut Teknologi Del yang berdedikasi memadukan keahlian analisis sistem informasi, perancangan antarmuka pengguna interaktif (UI/UX), dan modern front-end web development menggunakan ekosistem Bootstrap 5 & CSS modern untuk menghadirkan solusi teknologi terukur.
             </p>
-            <div class="hero-actions">
-              <a href="https://wa.me/6281361507704" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">Whatsapp</a>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="#services" class="btn btn-primary px-4 py-2 fw-bold shadow-sm">
+                <i class="bi bi-send-fill me-1"></i> Mulai Diskusi Proyek
+              </a>
+              <a href="https://wa.me/6281361507704" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary px-4 py-2 fw-bold">
+                <i class="bi bi-whatsapp me-1"></i> WhatsApp Resmi
+              </a>
+              <a href="https://github.com/KelvinMarpaung18" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary px-3 py-2 fw-semibold">
+                <i class="bi bi-github me-1"></i> GitHub
+              </a>
             </div>
           </div>
 
-        <div class="hero-avatar-side">
-  <div class="avatar-circle-frame">
-   <img src="potoku.jpeg" alt="Foto Kelvin Yohanes Putra" class="hero-avatar-img">
-    <span class="online-indicator" title="Status: Aktif"></span>
-  </div>
-</div>
+          <!-- Avatar Side (col-lg-4) -->
+          <div class="col-12 col-lg-4 text-center order-1 order-lg-2 d-flex justify-content-center align-items-center pt-lg-4">
+            <div class="avatar-wrapper position-relative d-inline-block">
+              <img src="potoku.jpeg" alt="Foto Profil Kelvin Yohanes Putra" class="img-fluid rounded-circle avatar-image shadow-lg">
+              <span class="avatar-online-status" title="Status: Online & Tersedia"></span>
+            </div>
+          </div>
         </div>
 
-        <div class="hero-body-extra">
-          <div class="grid-two-col">
-            <div class="info-box">
-              <h2>💡 Keahlian Utama</h2>
-              <ul class="skills-tags">
-                <li class="tag">Frontend Development</li>
-                <li class="tag">UI/UX Design</li>
-                <li class="tag">System Analysis</li>
-                <li class="tag">Clean Code</li>
-                <li class="tag">Problem Solving</li>
+        <!-- Stats & Metrics Cards (Materi Lab 1 Modul) -->
+        <div class="row g-3 mt-3 pt-3 border-top border-secondary-subtle">
+          <div class="col-12 col-sm-6">
+            <div class="metric-card" data-accent="blue">
+              <div class="metric-icon-box">
+                <i class="bi bi-lightning-charge-fill text-primary"></i>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label d-block text-muted">Proyek Diselesaikan</span>
+                <strong class="metric-value fs-5">5+ Proyek Teruji</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="metric-card" data-accent="blue">
+              <div class="metric-icon-box">
+                <i class="bi bi-trophy-fill text-warning"></i>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label d-block text-muted">Prestasi & Sertifikat</span>
+                <strong class="metric-value fs-5">4 Penghargaan & Sertifikat</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extra Skill & Academic Focus (Grid Sub-Kolom) -->
+        <div class="row g-3 mt-4 pt-3 border-top border-secondary-subtle">
+          <div class="col-12 col-md-6">
+            <div class="info-surface-card p-3 h-100 rounded-3">
+              <h3 class="h6 fw-bold mb-2 text-primary">
+                <i class="bi bi-lightbulb-fill text-warning me-1"></i> Keahlian Utama (Core Competencies)
+              </h3>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="badge badge-skill">Responsive Web Design</span>
+                <span class="badge badge-skill">Bootstrap 5.3 Framework</span>
+                <span class="badge badge-skill">CSS Architecture & Variables</span>
+                <span class="badge badge-skill">UI/UX Prototyping</span>
+                <span class="badge badge-skill">System Analysis (BPMN)</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="info-surface-card p-3 h-100 rounded-3">
+              <h3 class="h6 fw-bold mb-2 text-primary">
+                <i class="bi bi-bullseye text-danger me-1"></i> Fokus Akademik & Karir
+              </h3>
+              <ul class="mb-0 ps-3 text-secondary small">
+                <li>Analisis & Perancangan Sistem Informasi Terintegrasi</li>
+                <li>Pengembangan Aplikasi Web Interaktif berstandar WCAG 2.2 AA</li>
+                <li>Optimasi Desain Antarmuka Responsif & Pengujian Fungsional</li>
               </ul>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="info-box">
-              <h2>🎯 Fokus Akademik</h2>
-              <ol class="milestones-list">
-                <li>Analisis & Desain Sistem Informasi</li>
-                <li>Pengembangan Aplikasi Berbasis Web</li>
-                <li>Integrasi Pengalaman Pengguna (UX)</li>
-              </ol>
+    <!-- ========================================================================
+         SEKSI 1: GRID PORTOFOLIO PROYEK & BOOTSTRAP MODAL (MODUL REQUIREMENT 3)
+         ======================================================================== -->
+    <section id="portfolio-cards" class="content-section-card mb-4 p-4 p-md-4">
+      <div class="section-title-wrap mb-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+          <div>
+            <h2 class="h4 fw-bold text-dark mb-1">
+              <i class="bi bi-folder-check text-primary me-2"></i> Showcase Portofolio Proyek Unggulan
+            </h2>
+            <p class="text-muted small mb-0">Daftar implementasi sistem dan produk web yang telah dikembangkan secara komprehensif.</p>
+          </div>
+          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill fw-bold">
+            <i class="bi bi-layers-fill me-1"></i> 4 Proyek Terverifikasi
+          </span>
+        </div>
+      </div>
+
+      <!-- Grid 4 Kartu Proyek (row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-4) -->
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-4">
+        
+        <!-- Kartu 1: DelOlympic -->
+        <div class="col">
+          <div class="card h-100 project-card shadow-sm border-0">
+            <div class="project-card-header text-white p-3 d-flex justify-content-between align-items-start">
+              <div>
+                <span class="badge bg-light text-dark fw-bold mb-2">Web App</span>
+                <h3 class="h6 fw-bold mb-0">DelOlympic Portal</h3>
+              </div>
+              <i class="bi bi-trophy fs-3 opacity-75"></i>
+            </div>
+            <div class="card-body d-flex flex-direction-column flex-column justify-content-between">
+              <div>
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">HTML5/CSS3</span>
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Bootstrap 5</span>
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">PHP Native</span>
+                </div>
+                <p class="card-text text-secondary small">
+                  Platform manajemen kompetisi olimpiade terpadu untuk pendaftaran, penjadwalan, dan perolehan skor langsung mahasiswa.
+                </p>
+              </div>
+              <div class="mt-3 pt-3 border-top border-light-subtle">
+                <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#modalDelOlympic">
+                  <i class="bi bi-eye-fill me-1"></i> Detail Proyek
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
 
-    <!-- LOWER CONTENT LAYOUT -->
-    <div class="layout-container">
-      <div class="main-content">
-
-        <!-- DATA TABULAR SECTION (MODUL REQUIREMENT) -->
-        <section id="portfolio" class="card-section">
-          <div class="section-header">
-            <h2>📊 Rekapitulasi Proyek & Akademik</h2>
-            <p class="section-desc">Daftar capaian matakuliah dan pengembangan proyek Sistem Informasi.</p>
+        <!-- Kartu 2: TobaSatSet -->
+        <div class="col">
+          <div class="card h-100 project-card shadow-sm border-0">
+            <div class="project-card-header project-header-teal text-white p-3 d-flex justify-content-between align-items-start">
+              <div>
+                <span class="badge bg-light text-dark fw-bold mb-2">Technopreneur</span>
+                <h3 class="h6 fw-bold mb-0">TobaSatSet Service</h3>
+              </div>
+              <i class="bi bi-shop fs-3 opacity-75"></i>
+            </div>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">UI/UX Design</span>
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Business Plan</span>
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Front-End</span>
+                </div>
+                <p class="card-text text-secondary small">
+                  Aplikasi jasa antar dan layanan lokal kawasan Toba yang menghubungkan UMKM dengan konsumen kampus secara instan.
+                </p>
+              </div>
+              <div class="mt-3 pt-3 border-top border-light-subtle">
+                <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#modalTobaSatSet">
+                  <i class="bi bi-eye-fill me-1"></i> Detail Proyek
+                </button>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <div class="table-container">
-            <table class="styled-table">
-              <caption>Rekapitulasi Capaian Matakuliah S1 Sistem Informasi</caption>
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Proyek</th>
-                  <th scope="col">Matakuliah</th>
-                  <th scope="col">Semester</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td class="font-semibold">DelOlympic</td>
-                  <td>Pemrograman & Pengujian Web (PPW)</td>
-                  <td>Genap 2026/2027</td>
-                  <td><span class="badge badge-progress">Sedang Berjalan</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td class="font-semibold">TobaSatSet</td>
-                  <td>Tekno</td>
-                  <td>Genap 2025/2026</td>
-                  <td><span class="badge badge-success">Selesai</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td class="font-semibold">Sistem Manajemen Akademik</td>
-                  <td>Pemrograman Berbasis Objek (PBO)</td>
-                  <td>Ganjil 2025/2026</td>
-                  <td><span class="badge badge-success">Selesai</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td class="font-semibold">SI Loket PT. Parisma Jaya Trans Balige</td>
-                  <td>Analisis & Perancangan Sistem (Anaprancis)</td>
-                  <td>Genap 2025/2026</td>
-                  <td><span class="badge badge-success">Selesai</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td class="font-semibold">Aplikasi Jadwal Imunisasi Anak Indonesia</td>
-                  <td>Desain UI/UX</td>
-                  <td>Genap 2025/2026</td>
-                  <td><span class="badge badge-success">Selesai</span></td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="4">Total Modul/Proyek Terdaftar</td>
-                  <td class="font-semibold">5 Unit</td>
-                </tr>
-              </tfoot>
-            </table>
+        <!-- Kartu 3: SI Loket Parisma Jaya -->
+        <div class="col">
+          <div class="card h-100 project-card shadow-sm border-0">
+            <div class="project-card-header project-header-indigo text-white p-3 d-flex justify-content-between align-items-start">
+              <div>
+                <span class="badge bg-light text-dark fw-bold mb-2">Enterprise SI</span>
+                <h3 class="h6 fw-bold mb-0">Loket Parisma Jaya</h3>
+              </div>
+              <i class="bi bi-bus-front fs-3 opacity-75"></i>
+            </div>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Anaprancis</span>
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">BPMN 2.0</span>
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Database Design</span>
+                </div>
+                <p class="card-text text-secondary small">
+                  Perancangan dan pemodelan sistem informasi manajemen pemesanan tiket bus dan kargo PT Parisma Jaya Trans Balige.
+                </p>
+              </div>
+              <div class="mt-3 pt-3 border-top border-light-subtle">
+                <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#modalParismaJaya">
+                  <i class="bi bi-eye-fill me-1"></i> Detail Proyek
+                </button>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
 
-        <!-- FORM SECTION (MODUL REQUIREMENT) -->
-        <section id="services" class="card-section">
-          <div class="section-header">
-            <h2>💬 Konsultasi & Layanan Project</h2>
-            <p class="section-desc">Kirimkan rincian kebutuhan web atau diskusi proyek Anda melalui formulir di bawah ini.</p>
+        <!-- Kartu 4: Imunisasi Anak App -->
+        <div class="col">
+          <div class="card h-100 project-card shadow-sm border-0">
+            <div class="project-card-header project-header-purple text-white p-3 d-flex justify-content-between align-items-start">
+              <div>
+                <span class="badge bg-light text-dark fw-bold mb-2">HealthTech UI</span>
+                <h3 class="h6 fw-bold mb-0">Jadwal Imunisasi Anak</h3>
+              </div>
+              <i class="bi bi-heart-pulse fs-3 opacity-75"></i>
+            </div>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Figma Design</span>
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">UX Research</span>
+                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Design System</span>
+                </div>
+                <p class="card-text text-secondary small">
+                  Desain antarmuka aplikasi pemantauan dan pengingat jadwal vaksinasi berkala balita Indonesia berbasis pedoman IDAI.
+                </p>
+              </div>
+              <div class="mt-3 pt-3 border-top border-light-subtle">
+                <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#modalImunisasi">
+                  <i class="bi bi-eye-fill me-1"></i> Detail Proyek
+                </button>
+              </div>
+            </div>
           </div>
-
-          <form class="custom-form" action="#" method="POST">
-            <fieldset class="form-fieldset">
-              <legend class="form-legend">👤 Data Identitas</legend>
-              
-              <div class="form-group">
-                <label for="nama" class="form-label">Nama Lengkap <span class="req">*</span></label>
-                <input type="text" id="nama" name="nama" class="form-control" required placeholder="Masukkan nama lengkap Anda">
-              </div>
-
-              <div class="grid-two-col gap-sm">
-                <div class="form-group">
-                  <label for="email" class="form-label">Email Kampus / Official <span class="req">*</span></label>
-                  <input type="email" id="email" name="email" class="form-control" required placeholder="nama@del.ac.id">
-                </div>
-                <div class="form-group">
-                  <label for="telepon" class="form-label">Nomor WhatsApp <span class="req">*</span></label>
-                  <input type="tel" id="telepon" name="telepon" class="form-control" required placeholder="0812xxxxxxx">
-                </div>
-              </div>
-              <small class="form-help">Email dan nomor WhatsApp akan digunakan untuk mengonfirmasi jadwal balasan.</small>
-            </fieldset>
-
-            <fieldset class="form-fieldset">
-              <legend class="form-legend">Detail Permintaan & Spesifikasi Proyek</legend>
-
-              <div class="form-group">
-                <label for="layanan" class="form-label">Kategori Layanan <span class="req">*</span></label>
-                <select id="layanan" name="layanan" class="form-control" required>
-                  <option value="" disabled selected>-- Pilih Kategori Layanan --</option>
-                  <option value="uiux">UI/UX Design & Prototype</option>
-                  <option value="frontend">Frontend Web Development</option>
-                  <option value="analisis">Analisis Kebutuhan Sistem</option>
-                  <option value="fullstack">Fullstack Web Solution</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <span class="form-label">Tipe Pemohon / Organisasi <span class="req">*</span></span>
-                <div class="radio-inline-group">
-                  <label for="pemohon-mahasiswa" class="radio-card">
-                    <input type="radio" id="pemohon-mahasiswa" name="tipe_pemohon" value="mahasiswa" checked>
-                    <span>Mahasiswa / Perorangan</span>
-                  </label>
-                  <label for="pemohon-umkm" class="radio-card">
-                    <input type="radio" id="pemohon-umkm" name="tipe_pemohon" value="umkm">
-                    <span>UMKM / Startup</span>
-                  </label>
-                  <label for="pemohon-perusahaan" class="radio-card">
-                    <input type="radio" id="pemohon-perusahaan" name="tipe_pemohon" value="perusahaan">
-                    <span>Instansi / Perusahaan</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <span class="form-label">Opsi Tambahan yang Diinginkan:</span>
-                <div class="checkbox-group-inline">
-                  <label for="opsi-seo" class="checkbox-label-inline">
-                    <input type="checkbox" id="opsi-seo" name="opsi_tambahan[]" value="seo">
-                    <span>Optimasi SEO Semantik</span>
-                  </label>
-                  <label for="opsi-wcag" class="checkbox-label-inline">
-                    <input type="checkbox" id="opsi-wcag" name="opsi_tambahan[]" value="wcag" checked>
-                    <span>Sertifikasi Standar WCAG AA</span>
-                  </label>
-                  <label for="opsi-maintenance" class="checkbox-label-inline">
-                    <input type="checkbox" id="opsi-maintenance" name="opsi_tambahan[]" value="maintenance">
-                    <span>Garansi Maintenance 1 Bulan</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="pesan" class="form-label">Deskripsi Kebutuhan Proyek <span class="req">*</span></label>
-                <textarea id="pesan" name="pesan" class="form-control" rows="4" required placeholder="Jelaskan ruang lingkup proyek, target tenggat waktu, serta kebutuhan khusus Anda..."></textarea>
-              </div>
-            </fieldset>
-
-            <button type="submit" class="btn-primary-submit">Kirim Permintaan Konsultasi</button>
-          </form>
-        </section>
+        </div>
 
       </div>
-    </div>
+    </section>
 
-    <!-- ASIDE SECTION (PERSYARATAN SEMANTIK MODUL HTML5) -->
-    <aside class="aside-info-banner">
-      <p>💡 <strong>Status Layanan &amp; Aksesibilitas:</strong> Terbuka untuk diskusi proyek web &amp; analisis sistem. Kontak via WhatsApp <a href="https://wa.me/6281361507704" target="_blank" rel="noopener noreferrer">081361507704</a> atau Email <a href="mailto:yohaneskelvin@gmail.com">yohaneskelvin@gmail.com</a>. Sesuai Standar WCAG 2.2 Level AA.</p>
+    <!-- ========================================================================
+         SEKSI 2: DATA TABULAR REKAPITULASI CAPAIAN AKADEMIK
+         ======================================================================== -->
+    <section id="academic-recap" class="content-section-card mb-4 p-4">
+      <div class="section-title-wrap mb-3">
+        <h2 class="h4 fw-bold text-dark mb-1">
+          <i class="bi bi-table text-primary me-2"></i> Rekapitulasi Capaian Matakuliah S1 Sistem Informasi
+        </h2>
+        <p class="text-muted small mb-0">Data resmi keterkaitan matakuliah, semester tempuh, serta status pengerjaan proyek akademik.</p>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle custom-styled-table mb-0">
+          <caption class="text-end small text-muted pt-2">Data per Semester Ganjil/Genap 2025/2026 - 2026/2027 • Institut Teknologi Del</caption>
+          <thead class="table-primary-custom">
+            <tr>
+              <th scope="col" class="text-center" style="width: 5%">No</th>
+              <th scope="col" style="width: 30%">Nama Proyek</th>
+              <th scope="col" class="text-center" style="width: 32%">Mata Kuliah</th>
+              <th scope="col" style="width: 18%">Periode Semester</th>
+              <th scope="col" class="text-center" style="width: 15%">Status Capaian</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="text-center fw-bold text-secondary">1</th>
+              <td class="fw-bold text-dark">
+                <i class="bi bi-window-sidebar me-2 text-primary"></i> Del Olympic
+              </td>
+              <td class="text-center">Pemrograman & Pengujian Web (PPW)</td>
+              <td>Genap 2026/2027</td>
+              <td class="text-center">
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1 rounded-pill">
+                  <i class="bi bi-arrow-repeat me-1"></i> Berjalan
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-center fw-bold text-secondary">2</th>
+              <td class="fw-bold text-dark">
+                <i class="bi bi-shop me-2 text-info"></i> Toba SatSet
+              </td>
+              <td class="text-center">Tekno</td>
+              <td>Genap 2025/2026</td>
+              <td class="text-center">
+                <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 rounded-pill">
+                  <i class="bi bi-check-circle-fill me-1"></i> Selesai
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-center fw-bold text-secondary">3</th>
+              <td class="fw-bold text-dark">
+                <i class="bi bi-mortarboard me-2 text-warning"></i> Sistem Manajemen Akademik
+              </td>
+              <td class="text-center">Pemrograman Berbasis Objek (PBO)</td>
+              <td>Ganjil 2025/2026</td>
+              <td class="text-center">
+                <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 rounded-pill">
+                  <i class="bi bi-check-circle-fill me-1"></i> Selesai
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-center fw-bold text-secondary">4</th>
+              <td class="fw-bold text-dark">
+                <i class="bi bi-bus-front me-2 text-primary"></i> Sistem Informasi PT Parisma Jaya Trans Balige
+              </td>
+              <td class="text-center">Analisis & Perancangan Sistem (Anaprancis)</td>
+              <td>Genap 2025/2026</td>
+              <td class="text-center">
+                <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 rounded-pill">
+                  <i class="bi bi-check-circle-fill me-1"></i> Selesai
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-center fw-bold text-secondary">5</th>
+              <td class="fw-bold text-dark">
+                <i class="bi bi-phone me-2 text-danger"></i> Aplikasi Jadwal Imunisasi Anak
+              </td>
+              <td class="text-center">Desain UI/UX</td>
+              <td>Genap 2025/2026</td>
+              <td class="text-center">
+                <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 rounded-pill">
+                  <i class="bi bi-check-circle-fill me-1"></i> Selesai
+                </span>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot class="table-light">
+            <tr>
+              <td colspan="4" class="fw-bold text-end">Total Modul/Proyek Terdaftar:</td>
+              <td class="text-center fw-bold text-primary">5 Unit Proyek</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SEKSI 3: SERTIFIKAT & PENGHARGAAN (BOOTSTRAP GRID & MODALS)
+         ======================================================================== -->
+    <section id="sertifikat" class="content-section-card mb-4 p-4">
+      <div class="section-title-wrap mb-4">
+        <h2 class="h4 fw-bold text-dark mb-1">
+          <i class="bi bi-patch-check-fill text-warning me-2"></i> Sertifikat & Piagam Penghargaan
+        </h2>
+        <p class="text-muted small mb-0">Klik tombol atau thumbnail pada kartu di bawah ini untuk melihat dokumen sertifikat resolusi tinggi.</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-4">
+        <!-- Sertifikat 1 -->
+        <div class="col">
+          <div class="card h-100 cert-card shadow-sm border-0">
+            <div class="cert-img-container">
+              <img src="sertif_bronze.png" alt="Sertifikat Bronze Medal PIN 2" class="card-img-top cert-thumbnail" loading="lazy">
+              <div class="cert-hover-overlay" data-bs-toggle="modal" data-bs-target="#modalCertBronze">
+                <span class="btn btn-sm btn-light fw-bold shadow-sm">
+                  <i class="bi bi-zoom-in me-1"></i> Pratinjau
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle mb-2">
+                🥉 Bronze Medal
+              </span>
+              <h3 class="h6 fw-bold card-title mb-1">Lomba Essay Nasional PIN 2</h3>
+              <p class="text-muted small mb-2">Nusantara Muda × FAPERTA UMMAT & UNW</p>
+              <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                <span class="text-primary small fw-semibold">📅 4–6 Juli 2026</span>
+                <button type="button" class="btn btn-link btn-sm text-decoration-none p-0 fw-bold" data-bs-toggle="modal" data-bs-target="#modalCertBronze">
+                  Lihat <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sertifikat 2 -->
+        <div class="col">
+          <div class="card h-100 cert-card shadow-sm border-0">
+            <div class="cert-img-container">
+              <img src="sertif_emas.jpg" alt="Piagam Medali Emas POSI" class="card-img-top cert-thumbnail" loading="lazy">
+              <div class="cert-hover-overlay" data-bs-toggle="modal" data-bs-target="#modalCertGold">
+                <span class="btn btn-sm btn-light fw-bold shadow-sm">
+                  <i class="bi bi-zoom-in me-1"></i> Pratinjau
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="badge bg-warning text-dark border border-warning-subtle mb-2">
+                🥇 Medali Emas
+              </span>
+              <h3 class="h6 fw-bold card-title mb-1">Pekan Olimpiade Sains Indonesia (POSI)</h3>
+              <p class="text-muted small mb-2">Academy Berprestasi Indonesia</p>
+              <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                <span class="text-primary small fw-semibold">📅 2 Agustus 2026</span>
+                <button type="button" class="btn btn-link btn-sm text-decoration-none p-0 fw-bold" data-bs-toggle="modal" data-bs-target="#modalCertGold">
+                  Lihat <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sertifikat 3 -->
+        <div class="col">
+          <div class="card h-100 cert-card shadow-sm border-0">
+            <div class="cert-img-container">
+              <img src="sertif_ipb.png" alt="Sertifikat Peserta IPB University" class="card-img-top cert-thumbnail" loading="lazy">
+              <div class="cert-hover-overlay" data-bs-toggle="modal" data-bs-target="#modalCertIPB">
+                <span class="btn btn-sm btn-light fw-bold shadow-sm">
+                  <i class="bi bi-zoom-in me-1"></i> Pratinjau
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="badge bg-success-subtle text-success border border-success-subtle mb-2">
+                📜 Peserta Finalis
+              </span>
+              <h3 class="h6 fw-bold card-title mb-1">Inovasi Teknologi Pertanian 1.0</h3>
+              <p class="text-muted small mb-2">Fakultas Peternakan IPB University</p>
+              <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                <span class="text-primary small fw-semibold">📅 23 Mei 2026</span>
+                <button type="button" class="btn btn-link btn-sm text-decoration-none p-0 fw-bold" data-bs-toggle="modal" data-bs-target="#modalCertIPB">
+                  Lihat <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sertifikat 4: Del English Club -->
+        <div class="col">
+          <div class="card h-100 cert-card shadow-sm border-0">
+            <div class="cert-img-container">
+              <img src="sertif_dec.jpg" alt="Sertifikat Member Del English Club" class="card-img-top cert-thumbnail" loading="lazy">
+              <div class="cert-hover-overlay" data-bs-toggle="modal" data-bs-target="#modalCertDEC">
+                <span class="btn btn-sm btn-light fw-bold shadow-sm">
+                  <i class="bi bi-zoom-in me-1"></i> Pratinjau
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="badge bg-primary-subtle text-primary border border-primary-subtle mb-2">
+                🎖️ Member of DEC
+              </span>
+              <h3 class="h6 fw-bold card-title mb-1">Del English Club (DEC)</h3>
+              <p class="text-muted small mb-2">UPT Bahasa Institut Teknologi Del</p>
+              <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                <span class="text-primary small fw-semibold">📅 Periode 2024/2025</span>
+                <button type="button" class="btn btn-link btn-sm text-decoration-none p-0 fw-bold" data-bs-toggle="modal" data-bs-target="#modalCertDEC">
+                  Lihat <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SEKSI 4: MODERNISASI FORMULIR LAYANAN (MODUL REQUIREMENT 4)
+         Floating Labels, Input Groups, Validasi Visual Bootstrap 5
+         ======================================================================== -->
+    <section id="services" class="content-section-card mb-4 p-4 p-md-5">
+      <div class="section-title-wrap mb-4">
+        <h2 class="h4 fw-bold text-dark mb-1">
+          <i class="bi bi-envelope-paper-heart-fill text-primary me-2"></i> Formulir Konsultasi & Layanan IT
+        </h2>
+        <p class="text-muted small mb-0">
+          Lengkapi formulir terstandardisasi di bawah ini untuk memulai kerjasama, konsultasi antarmuka, atau pembuatan aplikasi web.
+        </p>
+      </div>
+
+      <!-- Form dengan validasi HTML5/Bootstrap 5 -->
+      <form class="needs-validation custom-bootstrap-form" novalidate id="serviceInquiryForm" action="#" method="POST">
+        
+        <!-- Fieldset 1: Data Identitas -->
+        <fieldset class="form-section-card p-3 p-md-4 mb-4 rounded-3 border">
+          <legend class="visually-hidden">I. Identitas & Informasi Kontak Pemohon</legend>
+          <div class="form-section-header d-flex align-items-center gap-2 pb-2 mb-3 border-bottom">
+            <i class="bi bi-person-lines-fill text-primary fs-5"></i>
+            <h3 class="fs-6 fw-bold text-primary mb-0">I. Identitas & Informasi Kontak Pemohon</h3>
+          </div>
+
+          <div class="row g-3">
+            <!-- Nama Lengkap (Floating Label + Input Group) -->
+            <div class="col-12 col-md-6">
+              <label for="floatingNama" class="form-label small fw-bold text-secondary mb-1">
+                Nama Lengkap Pemohon <span class="text-danger">*</span>
+              </label>
+              <div class="input-group has-validation">
+                <span class="input-group-text bg-white text-primary border-end-0">
+                  <i class="bi bi-person-badge"></i>
+                </span>
+                <div class="form-floating flex-grow-1">
+                  <input type="text" class="form-control border-start-0" id="floatingNama" name="nama" placeholder="Kelvin Yohanes" required minlength="3">
+                  <label for="floatingNama">Masukkan nama lengkap Anda...</label>
+                  <div class="invalid-feedback">Nama lengkap wajib diisi minimal 3 karakter.</div>
+                  <div class="valid-feedback">Format nama valid!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Email Kampus / Resmi (Floating Label + Input Group) -->
+            <div class="col-12 col-md-6">
+              <label for="floatingEmail" class="form-label small fw-bold text-secondary mb-1">
+                Alamat Email Resmi <span class="text-danger">*</span>
+              </label>
+              <div class="input-group has-validation">
+                <span class="input-group-text bg-white text-primary border-end-0">
+                  <i class="bi bi-envelope-at"></i>
+                </span>
+                <div class="form-floating flex-grow-1">
+                  <input type="email" class="form-control border-start-0" id="floatingEmail" name="email" placeholder="nama@del.ac.id" required>
+                  <label for="floatingEmail">nama@del.ac.id / akun@domain.com</label>
+                  <div class="invalid-feedback">Alamat email resmi wajib disertakan dengan format valid.</div>
+                  <div class="valid-feedback">Email valid!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nomor WhatsApp (Floating Label + Input Group) -->
+            <div class="col-12 col-md-6">
+              <label for="floatingPhone" class="form-label small fw-bold text-secondary mb-1">
+                Nomor WhatsApp / Kontak <span class="text-danger">*</span>
+              </label>
+              <div class="input-group has-validation">
+                <span class="input-group-text bg-white text-success border-end-0">
+                  <i class="bi bi-whatsapp"></i>
+                </span>
+                <div class="form-floating flex-grow-1">
+                  <input type="tel" class="form-control border-start-0" id="floatingPhone" name="telepon" placeholder="0813xxxxxxxx" pattern="^[0-9]{10,14}$" required>
+                  <label for="floatingPhone">Contoh: 081361507704</label>
+                  <div class="invalid-feedback">Nomor WhatsApp wajib berupa 10-14 digit angka.</div>
+                  <div class="valid-feedback">Nomor WhatsApp valid!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tipe Organisasi / Pemohon (Radio Buttons) -->
+            <div class="col-12 col-md-6">
+              <label class="form-label small fw-bold text-secondary mb-2 d-block">
+                Kategori Entitas Pemohon <span class="text-danger">*</span>
+              </label>
+              <div class="d-flex flex-wrap gap-2 pt-1">
+                <div class="form-check form-check-inline custom-radio-box flex-fill p-2 rounded border">
+                  <input class="form-check-input ms-1 me-2" type="radio" name="tipe_pemohon" id="pemohon1" value="mahasiswa" checked>
+                  <label class="form-check-label small fw-semibold" for="pemohon1">
+                    <i class="bi bi-mortarboard me-1"></i> Mahasiswa / Pribadi
+                  </label>
+                </div>
+                <div class="form-check form-check-inline custom-radio-box flex-fill p-2 rounded border">
+                  <input class="form-check-input ms-1 me-2" type="radio" name="tipe_pemohon" id="pemohon2" value="umkm">
+                  <label class="form-check-label small fw-semibold" for="pemohon2">
+                    <i class="bi bi-shop me-1"></i> UMKM / Startup
+                  </label>
+                </div>
+                <div class="form-check form-check-inline custom-radio-box flex-fill p-2 rounded border">
+                  <input class="form-check-input ms-1 me-2" type="radio" name="tipe_pemohon" id="pemohon3" value="instansi">
+                  <label class="form-check-label small fw-semibold" for="pemohon3">
+                    <i class="bi bi-building me-1"></i> Instansi / Korporasi
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Fieldset 2: Spesifikasi & Detail Permintaan -->
+        <fieldset class="form-section-card p-3 p-md-4 mb-4 rounded-3 border">
+          <legend class="visually-hidden">II. Spesifikasi Kebutuhan Proyek</legend>
+          <div class="form-section-header d-flex align-items-center gap-2 pb-2 mb-3 border-bottom">
+            <i class="bi bi-gear-wide-connected text-primary fs-5"></i>
+            <h3 class="fs-6 fw-bold text-primary mb-0">II. Spesifikasi Kebutuhan Proyek</h3>
+          </div>
+
+          <div class="row g-3">
+            <!-- Kategori Layanan (Select + Floating Label) -->
+            <div class="col-12 col-md-6">
+              <label for="floatingLayanan" class="form-label small fw-bold text-secondary mb-1">
+                Paket Layanan Utama <span class="text-danger">*</span>
+              </label>
+              <div class="input-group has-validation">
+                <span class="input-group-text bg-white text-primary border-end-0">
+                  <i class="bi bi-briefcase"></i>
+                </span>
+                <div class="form-floating flex-grow-1">
+                  <select class="form-select border-start-0" id="floatingLayanan" name="layanan" required>
+                    <option value="" selected disabled>Pilih salah satu layanan...</option>
+                    <option value="uiux">1. UI/UX Design & Figma High-Fidelity Prototype</option>
+                    <option value="frontend">2. Front-End Web Development (Bootstrap 5 & Clean Code)</option>
+                    <option value="analisis">3. Analisis Kebutuhan Sistem & Pemodelan BPMN</option>
+                    <option value="fullstack">4. Konsultasi & Pengujian Aksesibilitas WCAG 2.2</option>
+                  </select>
+                  <label for="floatingLayanan">Pilih Kategori Layanan</label>
+                  <div class="invalid-feedback">Silakan pilih salah satu kategori layanan.</div>
+                  <div class="valid-feedback">Layanan dipilih!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Target Estimasi Waktu (Input Group) -->
+            <div class="col-12 col-md-6">
+              <label for="floatingTimeline" class="form-label small fw-bold text-secondary mb-1">
+                Target Tenggat Waktu (Timeline)
+              </label>
+              <div class="input-group">
+                <span class="input-group-text bg-white text-primary border-end-0">
+                  <i class="bi bi-calendar-event"></i>
+                </span>
+                <div class="form-floating flex-grow-1">
+                  <select class="form-select border-start-0" id="floatingTimeline" name="timeline">
+                    <option value="urgent">Mendesak (&lt; 1 Minggu)</option>
+                    <option value="normal" selected>Standar (1 – 3 Minggu)</option>
+                    <option value="flexible">Fleksibel / Sesuai Kesepakatan</option>
+                  </select>
+                  <label for="floatingTimeline">Estimasi Batas Waktu</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Opsi Tambahan (Checkbox Group) -->
+            <div class="col-12">
+              <label class="form-label small fw-bold text-secondary mb-2 d-block">
+                Fitur Tambahan yang Diinginkan:
+              </label>
+              <div class="row g-2">
+                <div class="col-12 col-sm-4">
+                  <div class="form-check p-2 border rounded bg-white h-100 d-flex align-items-center">
+                    <input class="form-check-input ms-1 me-2" type="checkbox" id="optSeo" name="opsi[]" value="seo">
+                    <label class="form-check-label small" for="optSeo">
+                      <i class="bi bi-search me-1 text-primary"></i> Optimasi SEO On-Page
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="form-check p-2 border rounded bg-white h-100 d-flex align-items-center">
+                    <input class="form-check-input ms-1 me-2" type="checkbox" id="optWcag" name="opsi[]" value="wcag" checked>
+                    <label class="form-check-label small" for="optWcag">
+                      <i class="bi bi-universal-access me-1 text-primary"></i> Standar WCAG 2.2 AA
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="form-check p-2 border rounded bg-white h-100 d-flex align-items-center">
+                    <input class="form-check-input ms-1 me-2" type="checkbox" id="optSupport" name="opsi[]" value="support" checked>
+                    <label class="form-check-label small" for="optSupport">
+                      <i class="bi bi-shield-check me-1 text-primary"></i> Garansi & Dokumentasi
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Deskripsi Detail Kebutuhan (Floating Textarea) -->
+            <div class="col-12">
+              <label for="floatingPesan" class="form-label small fw-bold text-secondary mb-1">
+                Deskripsi Ruang Lingkup Proyek <span class="text-danger">*</span>
+              </label>
+              <div class="input-group has-validation">
+                <span class="input-group-text bg-white text-primary border-end-0 align-items-start pt-3">
+                  <i class="bi bi-chat-left-text"></i>
+                </span>
+                <div class="form-floating flex-grow-1">
+                  <textarea class="form-control border-start-0" id="floatingPesan" name="pesan" style="height: 120px;" placeholder="Tuliskan detail proyek" required minlength="10"></textarea>
+                  <label for="floatingPesan">Jelaskan latar belakang, kebutuhan sistem, tujuan, dan fitur yang diharapkan...</label>
+                  <div class="invalid-feedback">Mohon sertakan penjelasan proyek minimal 10 karakter.</div>
+                  <div class="valid-feedback">Deskripsi proyek telah diisi dengan baik!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Checkbox Persetujuan Syarat & Ketentuan (Wajib) -->
+            <div class="col-12 mt-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkSyarat" required>
+                <label class="form-check-label small text-secondary" for="checkSyarat">
+                  Saya menyatakan bahwa data yang diisikan adalah benar dan bersedia dihubungi untuk konfirmasi lebih lanjut. <span class="text-danger">*</span>
+                </label>
+                <div class="invalid-feedback">Anda wajib menyetujui pernyataan ini sebelum mengirim formulir.</div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Submit Button -->
+        <div class="text-end">
+          <button class="btn btn-primary px-4 py-2 fw-bold shadow-sm" type="submit">
+            <i class="bi bi-send-check me-1"></i> Kirim Permintaan Konsultasi Resmi
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ========================================================================
+         ASIDE CONTACT BAR & SOCIAL MEDIA (WCAG 2.2 AA STANDARD)
+         ======================================================================== -->
+    <aside class="content-section-card mb-4 p-4 text-center">
+      <h3 class="h6 fw-bold text-uppercase text-secondary tracking-wide mb-3">
+        📬 Saluran Komunikasi & Media Sosial Resmi
+      </h3>
+      
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+        <a href="https://wa.me/6281361507704" target="_blank" rel="noopener noreferrer" class="btn btn-social-pill btn-social-wa">
+          <i class="bi bi-whatsapp"></i>
+          <span>WhatsApp: 081361507704</span>
+        </a>
+        <a href="mailto:yohaneskelvin9@gmail.com" class="btn btn-social-pill btn-social-email">
+          <i class="bi bi-envelope-fill"></i>
+          <span>yohaneskelvin9@gmail.com</span>
+        </a>
+        <a href="https://github.com/KelvinMarpaung18" target="_blank" rel="noopener noreferrer" class="btn btn-social-pill btn-social-github">
+          <i class="bi bi-github"></i>
+          <span>GitHub: KelvinMarpaung18</span>
+        </a>
+        <a href="https://www.linkedin.com/in/kelvin-yohanes-putra" target="_blank" rel="noopener noreferrer" class="btn btn-social-pill btn-social-linkedin">
+          <i class="bi bi-linkedin"></i>
+          <span>LinkedIn: Kelvin Yohanes Putra</span>
+        </a>
+      </div>
+
+      <p class="small text-muted mb-0">
+        <i class="bi bi-universal-access-circle text-primary me-1"></i>
+        Dirancang dan diuji dengan kepatuhan standar aksesibilitas <strong>WCAG 2.2 Level AA</strong> serta Bootstrap 5 Responsive Grid.
+      </p>
     </aside>
+
   </main>
 
-  <!-- FOOTER -->
-  <footer class="main-footer">
-    <p>&copy; 2026 Kelvin Yohanes Putra • S1 Sistem Informasi Institut Teknologi Del</p>
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="custom-footer py-4 mt-auto border-top">
+    <div class="container text-center">
+      <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
+        <span class="logo-badge">KP</span>
+        <span class="fw-bold text-dark">Kelvin Yohanes Putra</span>
+      </div>
+      <p class="small text-muted mb-1">
+        NIM: 12S24018 • Program Studi Sarjana Sistem Informasi • Institut Teknologi Del
+      </p>
+      <p class="small text-secondary mb-0">
+        &copy; 2026 Pemrograman & Pengujian Web (12S3101). Seluruh hak cipta dilindungi.
+      </p>
+    </div>
   </footer>
 
+  <!-- ========================================================================
+       BOOTSTRAP 5 MODALS (MODAL DIALOG PROYEK & SERTIFIKAT)
+       Minimal 2 modal dengan konten berbeda (Modul Requirement 3 & 6)
+       ======================================================================== -->
+
+  <!-- Modal 1: DelOlympic -->
+  <div class="modal fade" id="modalDelOlympic" tabindex="-1" aria-labelledby="modalDelOlympicLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header bg-primary text-white rounded-top-4">
+          <h1 class="modal-title fs-5 fw-bold" id="modalDelOlympicLabel">
+            <i class="bi bi-trophy-fill me-2"></i> DelOlympic Competition Portal
+          </h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="badge bg-primary-subtle text-primary border border-primary-subtle mb-3 px-3 py-1 rounded-pill fw-semibold">
+            Kategori: Web Application • PPW 2026/2027
+          </div>
+          <h2 class="h6 fw-bold text-dark mb-2">Deskripsi Proyek</h2>
+          <p class="text-secondary small">
+            DelOlympic adalah sistem informasi kompetisi dan olimpiade berbasis web yang memfasilitasi mahasiswa Institut Teknologi Del dalam mendaftar berbagai cabang perlombaan akademik dan non-akademik, memantau jadwal pertandingan secara real-time, serta melihat papan peringkat skor terkini secara otomatis.
+          </p>
+          <h2 class="h6 fw-bold text-dark mb-2">Fitur Utama</h2>
+          <ul class="text-secondary small ps-3 mb-3">
+            <li>Autentikasi akun peserta dan panitia berbasis multi-role.</li>
+            <li>Manajemen pendaftaran tim dan verifikasi berkas daring.</li>
+            <li>Papan skor interaktif dengan pembaruan dinamis.</li>
+            <li>Desain antarmuka responsif berstandar Bootstrap 5.3.</li>
+          </ul>
+          <h2 class="h6 fw-bold text-dark mb-2">Teknologi yang Digunakan</h2>
+          <div class="d-flex flex-wrap gap-1">
+            <span class="badge bg-light text-dark border">Bootstrap 5.3</span>
+            <span class="badge bg-light text-dark border">CSS Custom Properties</span>
+            <span class="badge bg-light text-dark border">PHP Native & MySQL</span>
+            <span class="badge bg-light text-dark border">Bootstrap Icons</span>
+          </div>
+        </div>
+        <div class="modal-footer bg-light rounded-bottom-4">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: TobaSatSet -->
+  <div class="modal fade" id="modalTobaSatSet" tabindex="-1" aria-labelledby="modalTobaSatSetLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header bg-info-subtle text-info-emphasis rounded-top-4 border-bottom">
+          <h1 class="modal-title fs-5 fw-bold" id="modalTobaSatSetLabel">
+            <i class="bi bi-shop me-2"></i> TobaSatSet Local Service Solution
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="badge bg-info-subtle text-info-emphasis border border-info-subtle mb-3 px-3 py-1 rounded-pill fw-semibold">
+            Kategori: Technopreneurship & Business Platform
+          </div>
+          <h2 class="h6 fw-bold text-dark mb-2">Ringkasan Konsep</h2>
+          <p class="text-secondary small">
+            TobaSatSet adalah platform layanan terpadu yang dirancang untuk mengatasi permasalahan mobilitas dan akses pemesanan makanan serta kebutuhan pokok di lingkungan kampus IT Del dan sekitarnya di kawasan Danau Toba.
+          </p>
+          <h2 class="h6 fw-bold text-dark mb-2">Modul & Solusi Utama</h2>
+          <ul class="text-secondary small ps-3 mb-3">
+            <li>Katalog menu interaktif dari mitra warung makan dan toko lokal.</li>
+            <li>Kalkulator ongkos kirim transparan berbasis jarak kampus.</li>
+            <li>Integrasi notifikasi pesan instan WhatsApp Gateway.</li>
+          </ul>
+          <h2 class="h6 fw-bold text-dark mb-2">Tech Stack & Tools</h2>
+          <div class="d-flex flex-wrap gap-1">
+            <span class="badge bg-light text-dark border">Figma UI Prototype</span>
+            <span class="badge bg-light text-dark border">HTML5 Semantik</span>
+            <span class="badge bg-light text-dark border">Modern CSS Grid/Flex</span>
+          </div>
+        </div>
+        <div class="modal-footer bg-light rounded-bottom-4">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Parisma Jaya -->
+  <div class="modal fade" id="modalParismaJaya" tabindex="-1" aria-labelledby="modalParismaJayaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header bg-primary text-white rounded-top-4">
+          <h1 class="modal-title fs-5 fw-bold" id="modalParismaJayaLabel">
+            <i class="bi bi-bus-front-fill me-2"></i> SI Loket PT. Parisma Jaya Trans Balige
+          </h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="badge bg-primary-subtle text-primary border border-primary-subtle mb-3 px-3 py-1 rounded-pill fw-semibold">
+            Kategori: Enterprise Information System (Anaprancis)
+          </div>
+          <h2 class="h6 fw-bold text-dark mb-2">Deskripsi & Ruang Lingkup</h2>
+          <p class="text-secondary small">
+            Proyek analisis dan perancangan sistem informasi loket transportasi antarkota PT Parisma Jaya Trans di Balige. Merumuskan alur bisnis pemesanan tiket, pengelolaan armada bus, pembagian kursi otomatis, dan pencatatan manifest kargo barang.
+          </p>
+          <h2 class="h6 fw-bold text-dark mb-2">Deliverables</h2>
+          <ul class="text-secondary small ps-3 mb-3">
+            <li>Diagram BPMN 2.0 proses bisnis As-Is & To-Be.</li>
+            <li>Dokumen spesifikasi kebutuhan perangkat lunak (SKPL/SRS).</li>
+            <li>Diagram Entity Relationship (ERD) dan Logical Relational Structure.</li>
+            <li>Rancangan antarmuka kasir loket berbasis web cepat.</li>
+          </ul>
+        </div>
+        <div class="modal-footer bg-light rounded-bottom-4">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Imunisasi Anak -->
+  <div class="modal fade" id="modalImunisasi" tabindex="-1" aria-labelledby="modalImunisasiLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header bg-danger-subtle text-danger-emphasis rounded-top-4 border-bottom">
+          <h1 class="modal-title fs-5 fw-bold" id="modalImunisasiLabel">
+            <i class="bi bi-heart-pulse-fill me-2"></i> Aplikasi Jadwal Imunisasi Anak Indonesia
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="badge bg-danger-subtle text-danger border border-danger-subtle mb-3 px-3 py-1 rounded-pill fw-semibold">
+            Kategori: UI/UX HealthTech & User Centered Design
+          </div>
+          <h2 class="h6 fw-bold text-dark mb-2">Latar Belakang & Nilai Manfaat</h2>
+          <p class="text-secondary small">
+            Perancangan pengalaman pengguna untuk membantu orang tua Indonesia mencatat riwayat vaksinasi bayi dan balita secara akurat sesuai anjuran Ikatan Dokter Anak Indonesia (IDAI), dilengkapi sistem peringatan dini jadwal posyandu/puskesmas terdekat.
+          </p>
+          <h2 class="h6 fw-bold text-dark mb-2">Karakteristik Desain</h2>
+          <ul class="text-secondary small ps-3 mb-3">
+            <li>Desain antarmuka ramah ibu dan anak dengan palet warna pastel menenangkan.</li>
+            <li>Tingkat keterbacaan tinggi dan navigasi satu tangan yang ergonomis.</li>
+            <li>Prototyping interaktif dengan pengujian usability testing 85% kepuasan pengguna.</li>
+          </ul>
+        </div>
+        <div class="modal-footer bg-light rounded-bottom-4">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Sertifikat 1: Bronze Medal PIN 2 -->
+  <div class="modal fade" id="modalCertBronze" tabindex="-1" aria-labelledby="modalCertBronzeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header bg-light border-bottom">
+          <h1 class="modal-title fs-6 fw-bold text-dark" id="modalCertBronzeLabel">
+            🥉 Bronze Medal – Lomba Essay Nasional PIN 2
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body text-center p-3">
+          <img src="sertif_bronze.png" alt="Sertifikat Bronze Medal PIN 2" class="img-fluid rounded-3 shadow-sm mb-3">
+          <p class="text-secondary small mb-1 text-start">
+            <strong>Penyelenggara:</strong> Lembaga Setara Prisma Nusantara bekerjasama dengan Fakultas Pertanian Universitas Muhammadiyah Mataram dan Universitas Nahdlatul Wathan.
+          </p>
+          <p class="text-primary small fw-semibold mb-0 text-start">📅 4 – 6 Juli 2026 • Lombok, NTB</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Sertifikat 2: Medali Emas POSI -->
+  <div class="modal fade" id="modalCertGold" tabindex="-1" aria-labelledby="modalCertGoldLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header bg-light border-bottom">
+          <h1 class="modal-title fs-6 fw-bold text-dark" id="modalCertGoldLabel">
+            🥇 Medali Emas – Pekan Olimpiade Sains Indonesia (POSI)
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body text-center p-3">
+          <img src="sertif_emas.jpg" alt="Piagam Medali Emas POSI" class="img-fluid rounded-3 shadow-sm mb-3">
+          <p class="text-secondary small mb-1 text-start">
+            <strong>Penyelenggara:</strong> Academy Berprestasi Indonesia bidang Bahasa Inggris Tingkat Perguruan Tinggi Nasional.
+          </p>
+          <p class="text-primary small fw-semibold mb-0 text-start">📅 2 Agustus 2026 • Tingkat Nasional</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Sertifikat 3: IPB University -->
+  <div class="modal fade" id="modalCertIPB" tabindex="-1" aria-labelledby="modalCertIPBLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header bg-light border-bottom">
+          <h1 class="modal-title fs-6 fw-bold text-dark" id="modalCertIPBLabel">
+            📜 Sertifikat Peserta – IPB University
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body text-center p-3">
+          <img src="sertif_ipb.png" alt="Sertifikat Peserta IPB University" class="img-fluid rounded-3 shadow-sm mb-3">
+          <p class="text-secondary small mb-1 text-start">
+            <strong>Kegiatan:</strong> Agricultural Technology Innovation & Creative Competition 1.0 Fakultas Peternakan IPB University.
+          </p>
+          <p class="text-primary small fw-semibold mb-0 text-start">📅 23 Mei 2026 • Institut Pertanian Bogor</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Sertifikat 4: Del English Club -->
+  <div class="modal fade" id="modalCertDEC" tabindex="-1" aria-labelledby="modalCertDECLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header bg-light border-bottom">
+          <h1 class="modal-title fs-6 fw-bold text-dark" id="modalCertDECLabel">
+            🎖️ Certificate of Participation – Del English Club (DEC)
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body text-center p-3">
+          <img src="sertif_dec.jpg" alt="Sertifikat Member of Del English Club" class="img-fluid rounded-3 shadow-sm mb-3">
+          <p class="text-secondary small mb-1 text-start">
+            <strong>Pemberi Sertifikat:</strong> UPT Bahasa Institut Teknologi Del & Del English Club (DEC).
+          </p>
+          <p class="text-secondary small mb-1 text-start">
+            <strong>Keterangan:</strong> In recognition of exemplary service and dedication as the Member of Del English Club for the 2024/2025 period.
+          </p>
+          <p class="text-primary small fw-semibold mb-0 text-start">📅 Periode 2024/2025 • Institut Teknologi Del</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       5. BOOTSTRAP 5.3 JS BUNDLE (CDN) & CLIENT-SIDE VALIDATION SCRIPT
+       ======================================================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <script>
+    // Inisialisasi Validasi Visual Form Standar Bootstrap 5 (Modul Requirement 4)
+    (function () {
+      'use strict'
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          } else {
+            event.preventDefault();
+            alert('Terima kasih! Formulir konsultasi Anda berhasil tervalidasi dan terkirim.');
+            form.reset();
+            form.classList.remove('was-validated');
+            return false;
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
 </body>
 </html>

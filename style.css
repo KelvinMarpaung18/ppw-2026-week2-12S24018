@@ -1,768 +1,490 @@
-/* ==========================================================================
-   1. UNIVERSAL RESET & ICE BLUE PASTEL THEME (#B9F3FC, #AEE2FF, #90C8EC)
-   ========================================================================== */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+
+
+/* --------------------------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES (ROOT VARIABLES) - Min. 6 Variabel Wajib
+   -------------------------------------------------------------------------- */
+:root {
+  /* Palet Identitas Personal (Ice Blue Cyan & Deep Slate Ocean) */
+  --primary-brand: #0284c7;       /* 1. Warna Brand Utama / Aksen */
+  --primary-hover: #0369a1;       /* 2. Warna Aksen Interaktif (Hover State) */
+  --surface-bg: #ffffff;          /* 3. Latar Belakang Kartu / Permukaan */
+  --bg-page: #b9f3fc;             /* 4. Latar Belakang Luar Dokumen */
+  --bg-subtle: #e6f9fd;           /* 5. Latar Kotak Informasi & Sub-komponen */
+  --bg-middle-stripe: #aee2ff;    /* 6. Soft Accent Highlight & Badge */
+  --card-radius: 16px;            /* 7. Standar Lengkungan Sudut Komponen */
+  --shadow-lift: 0 14px 28px -4px rgba(2, 132, 199, 0.2); /* 8. Bayangan Mikro Elevasi */
+  --border-color: #90c8ec;        /* 9. Warna Garis Tepi Terpadu */
+  --text-primary: #0f172a;        /* 10. Warna Teks Judul & Headline */
+  --text-secondary: #334155;      /* 11. Warna Teks Paragraf & Deskripsi */
 }
 
-:root {
-  /* Ice Blue Pastel Palette (Referensi Gambar #B9F3FC) */
-  --bg-page: #B9F3FC;          /* Stripe 1: Soft Ice Cyan Outer Background */
-  --bg-card: #ffffff;          /* Clean White Card Background */
-  --bg-subtle: #e6f9fd;        /* Light Ice Blue for Inputs & Inner Boxes */
-  --bg-middle-stripe: #AEE2FF; /* Stripe 2: Soft Sky Blue for Highlights/Header */
-  --bg-bottom-stripe: #90C8EC; /* Stripe 3: Soft Muted Blue for Borders & Ribbons */
-
-  /* Accents */
-  --accent-purple: #0284c7;    /* Rich Ocean Blue Accent */
-  --accent-hover: #0369a1;     /* Darker Ocean Blue on Hover */
-  --accent-soft: #AEE2FF;      /* Soft Sky Blue Accent Fill */
-
-  /* Typography & Borders */
-  --text-primary: #0f172a;     /* Deep Slate Title Text */
-  --text-secondary: #334155;   /* Slate Body Text */
-  --border-color: #90C8EC;     /* Soft Muted Blue Border */
-  --border-focus: #0284c7;
-
-  /* Shadows & Radius */
-  --radius-card: 16px;
-  --radius-btn: 8px;
-  --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --shadow-glow: 0 0 20px rgba(2, 132, 199, 0.2);
+/* --------------------------------------------------------------------------
+   2. RESET DASAR & PENGATURAN TYPOGRAPHY GLOBAL
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-page);
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.65;
   min-height: 100vh;
 }
 
-/* ==========================================================================
-   2. HEADER & NAVIGATION BAR
-   ========================================================================== */
-.main-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
+/* --------------------------------------------------------------------------
+   3. HEADER & CUSTOM RESPONSIVE NAVBAR OVERRIDES
+   -------------------------------------------------------------------------- */
+.custom-navbar {
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1.5px solid var(--border-color);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  transition: all 0.3s ease;
 }
 
 .logo-badge {
-  background-color: var(--accent-purple);
+  background: linear-gradient(135deg, var(--primary-brand), var(--primary-hover));
   color: #ffffff;
   font-weight: 800;
   font-size: 0.85rem;
   padding: 0.35rem 0.65rem;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.35);
 }
 
-.brand-name {
-  font-weight: 800;
+.brand-text {
   font-size: 1.1rem;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
-.main-nav ul {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.main-nav a {
-  text-decoration: none;
-  color: var(--text-secondary);
+/* Navbar Links & State */
+.custom-navbar .nav-link {
   font-weight: 600;
-  font-size: 0.875rem;
-  transition: color 0.2s ease;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.main-nav a:hover {
-  color: var(--accent-purple);
+.custom-navbar .nav-link:hover {
+  color: var(--primary-brand);
+  background-color: var(--bg-subtle);
 }
 
-.nav-cta {
+.custom-navbar .nav-link.active {
+  color: var(--primary-brand);
   background-color: var(--bg-middle-stripe);
-  color: var(--accent-purple) !important;
-  border: 1px solid var(--border-color);
-  padding: 0.45rem 1rem;
-  border-radius: 20px;
+  font-weight: 700;
 }
 
-.nav-cta:hover {
-  background-color: var(--accent-purple);
-  color: #ffffff !important;
-  box-shadow: var(--shadow-glow);
-}
-
-/* ==========================================================================
-   3. LAYOUT GRID & HERO CONTAINER
-   ========================================================================== */
-.hero-container-wide {
-  max-width: 1200px;
-  margin: 2rem auto 1.5rem auto;
-  padding: 0 1.25rem;
-}
-
-.layout-container {
-  max-width: 1200px;
-  margin: 0 auto 1.5rem auto;
-  padding: 0 1.25rem;
-}
-
-/* ==========================================================================
-   4. HERO WIDE LANDSCAPE LAYOUT
-   ========================================================================== */
-.hero-wide-layout {
-  background: var(--bg-card);
-  border-radius: var(--radius-card);
+.btn-contact-nav {
+  background-color: var(--bg-middle-stripe);
+  color: var(--primary-brand);
   border: 1.5px solid var(--border-color);
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-  margin-bottom: 1.5rem;
+  border-radius: 20px;
+  transition: all 0.25s ease;
 }
 
-.hero-content-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2.5rem 2.25rem 2rem 2.25rem;
-  gap: 2rem;
+.btn-contact-nav:hover {
+  background-color: var(--primary-brand);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
 }
 
-.hero-text-side {
-  flex: 1;
-  max-width: 580px;
+/* --------------------------------------------------------------------------
+   4. HERO SECTION & CARDS ARCHITECTURE
+   -------------------------------------------------------------------------- */
+.hero-custom-card,
+.content-section-card {
+  background-color: var(--surface-bg);
+  border-radius: var(--card-radius);
+  border: 1.5px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
-.greeting-badge {
-  display: inline-block;
+.badge-greeting {
   background-color: var(--bg-middle-stripe);
-  color: var(--accent-purple);
+  color: var(--primary-brand);
   border: 1px solid var(--border-color);
   font-size: 0.8rem;
   font-weight: 700;
-  padding: 0.3rem 0.9rem;
-  border-radius: 20px;
-  margin-bottom: 1rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 25px;
 }
 
-.hero-title {
-  font-size: 1.95rem;
-  font-weight: 800;
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+}
+
+.hero-heading {
+  font-size: 2.1rem;
   color: var(--text-primary);
-  line-height: 1.3;
-  margin-bottom: 1rem;
+  line-height: 1.25;
 }
 
-.highlight-name {
-  color: var(--accent-purple);
-  position: relative;
+.text-highlight {
+  color: var(--primary-brand);
   text-decoration: underline;
   text-decoration-color: var(--bg-middle-stripe);
   text-underline-offset: 6px;
   text-decoration-thickness: 4px;
 }
 
-.hero-description {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.65;
-  margin-bottom: 1.5rem;
+.avatar-wrapper {
+  width: 220px;
+  height: 220px;
 }
 
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.btn-hero-primary {
-  background-color: var(--accent-purple);
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.875rem;
-  padding: 0.65rem 1.6rem;
-  border-radius: 25px;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
-  transition: all 0.25s ease;
-}
-
-.btn-hero-primary:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
-}
-
-.btn-hero-secondary {
-  background-color: var(--bg-middle-stripe);
-  color: var(--text-primary);
-  border: 1.5px solid var(--border-color);
-  font-weight: 700;
-  font-size: 0.875rem;
-  padding: 0.65rem 1.6rem;
-  border-radius: 25px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-}
-
-.btn-hero-secondary:hover {
-  border-color: var(--accent-purple);
-  color: var(--accent-purple);
-  background-color: var(--bg-page);
-  transform: translateY(-2px);
-}
-
-.hero-avatar-side {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.avatar-circle-frame {
-  position: relative;
-  width: 210px;
-  height: 210px;
-}
-
-.hero-avatar-img {
+.avatar-image {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  border: 5px solid var(--border-color);
   object-fit: cover;
-  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
-  transition: transform 0.3s ease;
+  border: 5px solid var(--border-color);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.hero-avatar-img:hover {
-  transform: scale(1.04);
+.avatar-image:hover {
+  transform: scale(1.05);
 }
 
-.online-indicator {
+.avatar-online-status {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 22px;
-  height: 22px;
+  bottom: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
   background-color: #22c55e;
-  border: 4px solid var(--bg-card);
+  border: 4px solid var(--surface-bg);
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
 }
 
-.hero-ticker-ribbon {
-  background-color: var(--bg-middle-stripe);
-  border-top: 2px solid var(--accent-purple);
-  border-bottom: 1.5px solid var(--border-color);
-  padding: 0.75rem 1.5rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 0.825rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.ticker-dot {
-  color: var(--accent-purple);
-  font-size: 1rem;
-}
-
-.hero-body-extra {
-  padding: 1.5rem 2.25rem 2rem 2.25rem;
-}
-
-.user-name {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--text-primary);
-}
-
-.user-role {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--accent-purple);
-  margin-bottom: 0.25rem;
-}
-
-.institution-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent-purple);
-  background-color: var(--bg-middle-stripe);
-  border: 1px solid var(--border-color);
-  padding: 0.25rem 0.7rem;
-  border-radius: 6px;
-  margin-bottom: 1.1rem;
-}
-
-.user-bio {
-  color: var(--text-secondary);
-  font-size: 0.925rem;
-  line-height: 1.65;
-  margin-bottom: 1.25rem;
-}
-
-.grid-two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.info-box {
+.info-surface-card {
   background-color: var(--bg-subtle);
-  padding: 1rem;
-  border-radius: 10px;
   border: 1.5px solid var(--border-color);
 }
 
-.info-box h2 {
-  font-size: 0.85rem;
-  font-weight: 700;
+.badge-skill {
+  background-color: var(--surface-bg);
   color: var(--text-primary);
-  margin-bottom: 0.6rem;
-}
-
-.skills-tags {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.tag {
-  background-color: var(--bg-card);
-  color: var(--text-primary);
-  font-size: 0.725rem;
-  font-weight: 600;
-  padding: 0.25rem 0.6rem;
-  border-radius: 6px;
   border: 1px solid var(--border-color);
+  font-size: 0.775rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
-.tag:hover {
-  border-color: var(--accent-purple);
-  color: var(--accent-purple);
+.badge-skill:hover {
+  border-color: var(--primary-brand);
+  color: var(--primary-brand);
+  transform: translateY(-1px);
 }
 
-.milestones-list {
-  padding-left: 1.1rem;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-}
-
-.milestones-list li {
-  margin-bottom: 0.2rem;
-}
-
-/* ==========================================================================
-   5. SEKSI KARTU & TABEL DATA
-   ========================================================================== */
-.card-section {
-  background: var(--bg-card);
-  border-radius: var(--radius-card);
+/* --------------------------------------------------------------------------
+   5. METRIC & STATISTIC CARDS (Pseudo-Elements & Lab 1 Patterns)
+   -------------------------------------------------------------------------- */
+.metric-card {
+  position: relative;
+  background: var(--surface-bg);
   border: 1.5px solid var(--border-color);
-  box-shadow: var(--shadow-card);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.section-header {
-  margin-bottom: 1.1rem;
-}
-
-.section-header h2 {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--text-primary);
-}
-
-.section-desc {
-  font-size: 0.825rem;
-  color: var(--text-secondary);
-}
-
-.table-container {
-  overflow-x: auto;
-}
-
-.styled-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-size: 0.825rem;
-}
-
-.styled-table caption {
-  caption-side: bottom;
-  font-size: 0.725rem;
-  color: var(--text-secondary);
-  margin-top: 0.5rem;
-  text-align: right;
-}
-
-.styled-table th, .styled-table td {
-  padding: 0.75rem 0.85rem;
-  border-bottom: 1px solid var(--border-color);
-  text-align: left;
-}
-
-.styled-table thead th {
-  background-color: var(--bg-middle-stripe);
-  color: var(--text-primary);
-  font-weight: 700;
-}
-
-.styled-table thead th:first-child { border-top-left-radius: 6px; }
-.styled-table thead th:last-child { border-top-right-radius: 6px; }
-
-.font-semibold { font-weight: 600; color: var(--text-primary); }
-
-.badge {
-  padding: 0.2rem 0.55rem;
   border-radius: 12px;
-  font-size: 0.7rem;
-  font-weight: 700;
-}
-
-.badge-success { background: rgba(34, 197, 94, 0.15); color: #15803d; border: 1px solid rgba(34, 197, 94, 0.4); }
-.badge-progress { background: var(--bg-middle-stripe); color: var(--accent-purple); border: 1px solid var(--border-color); }
-
-/* ==========================================================================
-   6. FORMULIR INTERAKTIF
-   ========================================================================== */
-.custom-form {
+  padding: 1rem 1.1rem;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 0.9rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.form-fieldset {
-  border: 1.5px solid var(--border-color);
-  border-radius: 12px;
-  padding: 1.25rem;
+/* Pseudo-element mikro-interaksi penunjuk garis aktif */
+.metric-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--primary-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+.metric-card:hover::before {
+  transform: scaleX(1);
+}
+
+.metric-icon-box {
+  width: 44px;
+  height: 44px;
   background-color: var(--bg-subtle);
-  margin-bottom: 1rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
 }
 
-.form-legend {
-  float: left;
+.metric-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.metric-value {
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   6. PORTOFOLIO PROJECT CARDS & BOOTSTRAP OVERRIDES
+   -------------------------------------------------------------------------- */
+.project-card {
+  border-radius: 14px;
+  border: 1.5px solid var(--border-color);
+  background-color: var(--surface-bg);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--primary-brand);
+}
+
+.project-card-header {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+}
+
+.project-header-teal {
+  background: linear-gradient(135deg, #0891b2, #0e7490);
+}
+
+.project-header-indigo {
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+}
+
+.project-header-purple {
+  background: linear-gradient(135deg, #9333ea, #7e22ce);
+}
+
+/* --------------------------------------------------------------------------
+   7. SERTIFIKAT CARDS & LIGHTBOX INTERACTIVE OVERLAYS
+   -------------------------------------------------------------------------- */
+.cert-card {
+  border-radius: 14px;
+  border: 1.5px solid var(--border-color);
+  overflow: hidden;
+  background-color: var(--surface-bg);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--primary-brand);
+}
+
+.cert-img-container {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background-color: var(--bg-subtle);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cert-thumbnail {
   width: 100%;
-  font-size: 0.9rem;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cert-card:hover .cert-thumbnail {
+  transform: scale(1.06);
+}
+
+.cert-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 132, 199, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-card:hover .cert-hover-overlay {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   8. TABEL REKAPITULASI CAPAIAN (ADVANCED PSEUDO-CLASS :NTH-CHILD)
+   -------------------------------------------------------------------------- */
+.custom-styled-table {
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 0.875rem;
+}
+
+.table-primary-custom th {
+  background-color: var(--bg-middle-stripe);
+  color: var(--text-primary);
   font-weight: 700;
-  color: var(--accent-purple);
-  padding-bottom: 0.6rem;
-  margin-bottom: 1rem;
+  border-bottom: 1.5px solid var(--border-color);
+  padding: 0.85rem 1rem;
+}
+
+.custom-styled-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.custom-styled-table tbody tr:hover {
+  background-color: var(--bg-subtle);
+}
+
+/* Pseudo-class :nth-child untuk zebra-striping */
+.custom-styled-table tbody tr:nth-child(even) {
+  background-color: rgba(230, 249, 253, 0.45);
+}
+
+.custom-styled-table td, 
+.custom-styled-table th {
+  padding: 0.75rem 1rem;
+  border-color: var(--border-color);
+}
+
+/* --------------------------------------------------------------------------
+   9. FORMULIR LAYANAN & FLOATING LABELS (MODUL REQUIREMENT 4)
+   -------------------------------------------------------------------------- */
+.form-section-card {
+  background-color: var(--bg-subtle);
+  border: 1.5px solid var(--border-color);
+  border-radius: 14px;
+}
+
+.form-section-header {
   border-bottom: 1.5px solid var(--border-color);
 }
 
-.form-fieldset > :not(legend) {
-  clear: both;
+.form-section-header h3 {
+  letter-spacing: -0.01em;
 }
 
-.form-group {
-  margin-bottom: 0.75rem;
-}
-
-.gap-sm { gap: 0.5rem; }
-
-.form-label {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.3rem;
-}
-
-.req { color: #dc2626; }
-
-.form-control {
-  width: 100%;
-  padding: 0.6rem 0.75rem;
-  font-size: 0.825rem;
-  border: 1.5px solid var(--border-color);
-  border-radius: 6px;
-  background-color: #ffffff;
-  color: var(--text-primary);
-  transition: all 0.2s ease;
-}
-
-.form-control option {
-  background-color: #ffffff;
-  color: var(--text-primary);
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: var(--accent-purple);
+/* Kombinator & Pseudo-class :focus-within pada input group */
+.input-group:focus-within {
   box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+  border-radius: 8px;
 }
 
-.form-help {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  margin-top: 0.25rem;
+.input-group:focus-within > .input-group-text {
+  border-color: var(--primary-brand);
+  color: var(--primary-brand);
 }
 
-.radio-inline-group {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+.input-group:focus-within > .form-floating > .form-control,
+.input-group:focus-within > .form-floating > .form-select {
+  border-color: var(--primary-brand);
 }
 
-.radio-card {
-  flex: 1;
-  min-width: 130px;
+.form-floating > .form-control,
+.form-floating > .form-select {
   border: 1.5px solid var(--border-color);
-  background: #ffffff;
-  padding: 0.45rem 0.7rem;
-  border-radius: 6px;
-  font-size: 0.775rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  cursor: pointer;
-  color: var(--text-primary);
-}
-
-.radio-card:hover {
-  border-color: var(--accent-purple);
-}
-
-.radio-card:has(input:checked) {
-  border-color: var(--accent-purple);
-  background-color: var(--bg-middle-stripe);
-  color: var(--text-primary);
-}
-
-.checkbox-group-inline {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  margin-top: 0.4rem;
-}
-
-.checkbox-label-inline {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  cursor: pointer;
-}
-
-.checkbox-label-inline input[type="checkbox"] {
-  accent-color: var(--accent-purple);
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-}
-
-.checkbox-wrapper {
-  margin-top: 0.4rem;
-}
-
-.checkbox-label {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: flex-start;
-  gap: 0.4rem;
-  cursor: pointer;
-}
-
-.btn-primary-submit {
-  width: 100%;
-  background-color: var(--accent-purple);
-  color: #ffffff;
-  border: none;
-  padding: 0.75rem;
   font-size: 0.875rem;
-  font-weight: 700;
-  border-radius: var(--radius-btn);
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
-  transition: all 0.2s ease;
 }
 
-.btn-primary-submit:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-2px);
+.form-floating > .form-control:focus,
+.form-floating > .form-select:focus {
+  border-color: var(--primary-brand);
+  box-shadow: none;
 }
 
-/* ==========================================================================
-   7. SIDEBAR KANAN & FOOTER
-   ========================================================================== */
-.sticky-card {
-  position: sticky;
-  top: 4.5rem;
-  background: var(--bg-card);
-  border: 1.5px solid var(--border-color);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  padding: 1.25rem;
-}
-
-.sidebar-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.9rem;
-}
-
-.contact-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1.1rem;
-}
-
-.contact-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.775rem;
-}
-
-.contact-list .icon {
-  font-size: 1rem;
-  background-color: var(--bg-subtle);
-  padding: 0.35rem;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
-}
-
-.contact-list .lbl {
-  display: block;
-  font-size: 0.65rem;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-}
-
-.contact-link {
-  color: var(--accent-purple);
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contact-link:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
-}
-
-.status-banner {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.725rem;
-  font-weight: 600;
-  color: #15803d;
-  background-color: rgba(34, 197, 94, 0.12);
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  padding: 0.45rem 0.65rem;
-  border-radius: 6px;
-}
-
-.pulse-dot {
-  width: 7px;
-  height: 7px;
-  background-color: #22c55e;
-  border-radius: 50%;
-}
-
-.aside-info-banner {
-  max-width: 1200px;
-  margin: 1.5rem auto;
-  padding: 1rem 1.5rem;
-  background-color: var(--bg-card);
-  border: 1.5px solid var(--border-color);
-  border-radius: var(--radius-card);
+.form-floating > label {
   font-size: 0.825rem;
-  color: var(--text-secondary);
-  box-shadow: var(--shadow-card);
-  text-align: center;
+  color: #64748b;
 }
 
-.aside-info-banner a {
-  color: var(--accent-purple);
+.custom-radio-box {
+  background-color: #ffffff;
+  border: 1.5px solid var(--border-color);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.custom-radio-box:hover {
+  border-color: var(--primary-brand);
+}
+
+.custom-radio-box:has(input:checked) {
+  background-color: var(--bg-middle-stripe);
+  border-color: var(--primary-brand);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   10. ASIDE SOCIAL BUTTONS & FOOTER
+   -------------------------------------------------------------------------- */
+.btn-social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
   font-weight: 700;
   text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.aside-info-banner a:hover {
-  text-decoration: underline;
+.btn-social-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-.main-footer {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  font-size: 0.775rem;
-  color: var(--text-secondary);
-  background-color: var(--bg-card);
-  border-top: 1.5px solid var(--border-color);
-  margin-top: 2.5rem;
+.btn-social-wa       { background: #e8f8f0; color: #128c3e; border-color: #a7d9bb; }
+.btn-social-email    { background: #eef2ff; color: #3730a3; border-color: #c7d2fe; }
+.btn-social-github   { background: #f3f4f6; color: #1f2937; border-color: #d1d5db; }
+.btn-social-linkedin { background: #eff6ff; color: #0a66c2; border-color: #bfdbfe; }
+
+.custom-footer {
+  background-color: var(--surface-bg);
+  border-color: var(--border-color);
 }
 
-/* ==========================================================================
-   8. MEDIA QUERIES
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   11. MEDIA QUERIES UNTUK RESOLUSI MOBILE
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  .layout-container {
-    grid-template-columns: 1fr;
+  .hero-heading {
+    font-size: 1.6rem;
   }
 
-  .grid-two-col {
-    grid-template-columns: 1fr;
-  }
-
-  .main-header {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .hero-content-wrapper {
-    flex-direction: column-reverse;
-    text-align: center;
-    padding: 1.75rem 1.25rem;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .avatar-circle-frame {
+  .avatar-wrapper {
     width: 160px;
     height: 160px;
+    margin-bottom: 1rem;
   }
 
-  .hero-title {
-    font-size: 1.5rem;
+  .custom-navbar .nav-link {
+    padding: 0.6rem 0.8rem;
   }
 }
