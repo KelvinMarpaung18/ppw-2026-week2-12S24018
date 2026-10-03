@@ -1,4 +1,4 @@
-﻿# Modernisasi Arsitektur Web Kontemporer: Decoupled Multi-Tier, Dynamic Client-Side Rendering (CSR), dan Network Performance Profiling
+# Modernisasi Arsitektur Web Kontemporer: Decoupled Multi-Tier, Dynamic Client-Side Rendering (CSR), dan Network Performance Profiling
 
 > **Mata Kuliah**: Pemrograman dan Pengujian Web (12S3101)  
 > **Modul Praktikum**: Minggu 04 – Konsep Dasar Arsitektur Aplikasi Web Kontemporer  
@@ -29,44 +29,47 @@ Aplikasi web minggu ke-4 ini mengalami transformasi fundamental dari **Arsitektu
 ### 1. Diagram Arsitektur C4 Container Model
 
 ```mermaid
-graph TD
-    subgraph ClientTier ["Presentation Tier (User Browser)"]
+flowchart TB
+    subgraph ClientTier ["Presentation Tier (Peramban / Browser)"]
         User["User / Web Browser"]
-        DOMShell["HTML5 Shell (index.html)"]
-        JSApp["Presentation Layer (js/app.js)"]
-        JSDAL["Data Access Layer (js/api-service.js)"]
-        ModalComp["Universal Dynamic Modal Component"]
-        LocalStorage["Browser LocalStorage (Persistensi Dispatch)"]
+        DOMShell["HTML5 Shell<br/>(index.html)"]
+        JSApp["Presentation Layer<br/>(js/app.js)"]
+        JSDAL["Data Access Layer<br/>(js/api-service.js)"]
+        ModalComp["Universal Dynamic Modal<br/>(#universalProjectModal)"]
+        LocalStorage["Browser LocalStorage<br/>(Persistensi State)"]
     end
 
-    subgraph StaticCDNTier ["Static Server & CDN Tier"]
-        BootstrapCDN["Bootstrap 5.3 & Icons CDN"]
-        GoogleFonts["Google Fonts CDN"]
+    subgraph CDNTier ["Static Server & CDN Tier"]
+        BootstrapCDN["Bootstrap 5.3 & Icons<br/>(CDN Aset)"]
+        GoogleFonts["Google Fonts<br/>(CDN Web Fonts)"]
     end
 
-    subgraph DataProviderTier ["Data Storage & Provider Tier (Decoupled JSON Layer)"]
-        ProfileJSON["data/profile.json (Biodata & Stats)"]
-        ProjectsJSON["data/projects.json (Portfolio Collection)"]
-        ServicesJSON["data/services.json (IT Service Catalog)"]
+    subgraph DataTier ["Data Storage & Provider Tier (Decoupled JSON Layer)"]
+        ProfileJSON["data/profile.json<br/>(Biodata & Stats)"]
+        ProjectsJSON["data/projects.json<br/>(Koleksi Portofolio)"]
+        ServicesJSON["data/services.json<br/>(Katalog Layanan IT)"]
     end
 
-    subgraph ServiceLogicTier ["Application & REST API Logic Tier"]
-        MockREST["Decoupled REST API Endpoint (/submitServiceOrder)"]
+    subgraph APITier ["Application & REST API Logic Tier"]
+        MockREST["Decoupled REST API Endpoint<br/>(/submitServiceOrder)"]
     end
 
-    User -->|HTTP GET Page Request| DOMShell
-    DOMShell -->|Load Styles & Fonts| BootstrapCDN
-    DOMShell -->|Load Web Fonts| GoogleFonts
-    DOMShell -->|Execute Main Engine| JSApp
-    JSApp -->|Invoke HTTP Requests| JSDAL
-    JSDAL -->|Fetch JSON Async| ProfileJSON
-    JSDAL -->|Fetch JSON Async| ProjectsJSON
-    JSDAL -->|Fetch JSON Async| ServicesJSON
-    JSApp -->|Dynamic CSR Injections| DOMShell
-    JSApp -->|Dynamic Modal Events| ModalComp
-    JSApp -->|Form Asynchronous Dispatch POST| MockREST
-    MockREST -->|JSON Response DTO| JSApp
-    JSApp -->|Persist Order DTO| LocalStorage
+    %% Hubungan dan Alur Komunikasi
+    User -->|1. HTTP GET Request| DOMShell
+    DOMShell -->|Load Styles| BootstrapCDN
+    DOMShell -->|Load Fonts| GoogleFonts
+    DOMShell -->|Execute Script| JSApp
+
+    JSApp -->|2. Invoke Data API| JSDAL
+    JSDAL -->|3a. Fetch Profile| ProfileJSON
+    JSDAL -->|3b. Fetch Projects| ProjectsJSON
+    JSDAL -->|3c. Fetch Services| ServicesJSON
+
+    JSApp -->|4. Dynamic CSR Injections| DOMShell
+    JSApp -->|5. Open Dynamic Modal| ModalComp
+    JSApp -->|6. Async Form POST| MockREST
+    MockREST -->|JSON DTO Response| JSApp
+    JSApp -->|7. Persist Order Data| LocalStorage
 ```
 
 ### 2. Landasan Ilmiah Pemisahan Minat (Separation of Concerns - SoC)
