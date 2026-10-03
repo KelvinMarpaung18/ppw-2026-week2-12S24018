@@ -16,13 +16,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- 4. CUSTOM CSS OVERRIDES (Dimuat setelah Bootstrap CSS sesuai Standar Modul) -->
-  <link rel="stylesheet" href="style.css">
+  <!-- 4. CUSTOM CSS OVERRIDES (Week 4 Modular CSS Architecture) -->
+  <link rel="stylesheet" href="css/custom-style.css">
 </head>
 <body>
 
   <!-- ========================================================================
-       HEADER & RESPONSIVE NAVBAR (MODUL REQUIREMENT 2)
+       HEADER & RESPONSIVE NAVBAR
        ======================================================================== -->
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light custom-navbar shadow-sm py-2">
@@ -82,7 +82,7 @@
        ======================================================================== -->
   <main class="container py-4">
 
-    <!-- HERO SECTION (GRID 12-KOLOM RESPONSIF) -->
+    <!-- HERO SECTION (GRID 12-KOLOM RESPONSIF & METRICS) -->
     <section id="about" class="hero-custom-card mb-4">
       <div class="p-4 p-md-5">
         <div class="row align-items-start g-4">
@@ -99,7 +99,7 @@
               Mahasiswa Sistem Informasi • UI/UX & Web Developer
             </h2>
             <p class="hero-lead text-muted mb-4">
-              Mahasiswa S1 Sistem Informasi di Institut Teknologi Del yang berdedikasi memadukan keahlian analisis sistem informasi, perancangan antarmuka pengguna interaktif (UI/UX), dan modern front-end web development menggunakan ekosistem Bootstrap 5 & CSS modern untuk menghadirkan solusi teknologi terukur.
+              Mahasiswa S1 Sistem Informasi di Institut Teknologi Del yang berdedikasi memadukan keahlian analisis sistem informasi, perancangan antarmuka pengguna interaktif (UI/UX), dan modern front-end web development berarsitektur Decoupled Multi-Tier CSR.
             </p>
             <div class="d-flex flex-wrap gap-2">
               <a href="#services" class="btn btn-primary px-4 py-2 fw-bold shadow-sm">
@@ -123,7 +123,7 @@
           </div>
         </div>
 
-        <!-- Stats & Metrics Cards (Materi Lab 1 Modul) -->
+        <!-- Stats & Metrics Cards -->
         <div class="row g-3 mt-3 pt-3 border-top border-secondary-subtle">
           <div class="col-12 col-sm-6">
             <div class="metric-card" data-accent="blue">
@@ -149,7 +149,7 @@
           </div>
         </div>
 
-        <!-- Extra Skill & Academic Focus (Grid Sub-Kolom) -->
+        <!-- Extra Skill & Academic Focus -->
         <div class="row g-3 mt-4 pt-3 border-top border-secondary-subtle">
           <div class="col-12 col-md-6">
             <div class="info-surface-card p-3 h-100 rounded-3">
@@ -157,10 +157,11 @@
                 <i class="bi bi-lightbulb-fill text-warning me-1"></i> Keahlian Utama (Core Competencies)
               </h3>
               <div class="d-flex flex-wrap gap-2">
-                <span class="badge badge-skill">Responsive Web Design</span>
+                <span class="badge badge-skill">Decoupled Multi-Tier</span>
+                <span class="badge badge-skill">Dynamic CSR (async/await)</span>
                 <span class="badge badge-skill">Bootstrap 5.3 Framework</span>
                 <span class="badge badge-skill">CSS Architecture & Variables</span>
-                <span class="badge badge-skill">UI/UX Prototyping</span>
+                <span class="badge badge-skill">Universal Dynamic Modal</span>
                 <span class="badge badge-skill">System Analysis (BPMN)</span>
               </div>
             </div>
@@ -172,8 +173,8 @@
               </h3>
               <ul class="mb-0 ps-3 text-secondary small">
                 <li>Analisis & Perancangan Sistem Informasi Terintegrasi</li>
-                <li>Pengembangan Aplikasi Web Interaktif berstandar WCAG 2.2 AA</li>
-                <li>Optimasi Desain Antarmuka Responsif & Pengujian Fungsional</li>
+                <li>Pengembangan Web Dynamic CSR dengan REST JSON Layer</li>
+                <li>Optimasi Performa Web DevTools (TTFB, FCP, Caching RFC 9111)</li>
               </ul>
             </div>
           </div>
@@ -182,146 +183,31 @@
     </section>
 
     <!-- ========================================================================
-         SEKSI 1: GRID PORTOFOLIO PROYEK & BOOTSTRAP MODAL (MODUL REQUIREMENT 3)
+         SEKSI 1: GRID PORTOFOLIO PROYEK DENGAN DYNAMIC CSR & FILTER
          ======================================================================== -->
     <section id="portfolio-cards" class="content-section-card mb-4 p-4 p-md-4">
       <div class="section-title-wrap mb-4">
-        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
           <div>
             <h2 class="h4 fw-bold text-dark mb-1">
               <i class="bi bi-folder-check text-primary me-2"></i> Showcase Portofolio Proyek Unggulan
             </h2>
-            <p class="text-muted small mb-0">Daftar implementasi sistem dan produk web yang telah dikembangkan secara komprehensif.</p>
+            <p class="text-muted small mb-0">Kartu portofolio dimuat secara asinkron dari provider <code>data/projects.json</code> via <code>js/api-service.js</code> & <code>js/app.js</code>.</p>
           </div>
           <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill fw-bold">
-            <i class="bi bi-layers-fill me-1"></i> 4 Proyek Terverifikasi
+            <i class="bi bi-cpu-fill me-1"></i> Dynamic CSR Active
           </span>
+        </div>
+
+        <!-- Filter Kategori Proyek Dinamis -->
+        <div id="categoryFilters" class="d-flex flex-wrap gap-2 pt-2 border-top">
+          <!-- Filter buttons diinjeksi via app.js -->
         </div>
       </div>
 
-      <!-- Grid 4 Kartu Proyek (row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-4) -->
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-4">
-        
-        <!-- Kartu 1: DelOlympic -->
-        <div class="col">
-          <div class="card h-100 project-card shadow-sm border-0">
-            <div class="project-card-header text-white p-3 d-flex justify-content-between align-items-start">
-              <div>
-                <span class="badge bg-light text-dark fw-bold mb-2">Web App</span>
-                <h3 class="h6 fw-bold mb-0">DelOlympic Portal</h3>
-              </div>
-              <i class="bi bi-trophy fs-3 opacity-75"></i>
-            </div>
-            <div class="card-body d-flex flex-direction-column flex-column justify-content-between">
-              <div>
-                <div class="d-flex flex-wrap gap-1 mb-2">
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">HTML5/CSS3</span>
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Bootstrap 5</span>
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">PHP Native</span>
-                </div>
-                <p class="card-text text-secondary small">
-                  Platform manajemen kompetisi olimpiade terpadu untuk pendaftaran, penjadwalan, dan perolehan skor langsung mahasiswa.
-                </p>
-              </div>
-              <div class="mt-3 pt-3 border-top border-light-subtle">
-                <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#modalDelOlympic">
-                  <i class="bi bi-eye-fill me-1"></i> Detail Proyek
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Kartu 2: TobaSatSet -->
-        <div class="col">
-          <div class="card h-100 project-card shadow-sm border-0">
-            <div class="project-card-header project-header-teal text-white p-3 d-flex justify-content-between align-items-start">
-              <div>
-                <span class="badge bg-light text-dark fw-bold mb-2">Technopreneur</span>
-                <h3 class="h6 fw-bold mb-0">TobaSatSet Service</h3>
-              </div>
-              <i class="bi bi-shop fs-3 opacity-75"></i>
-            </div>
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <div class="d-flex flex-wrap gap-1 mb-2">
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">UI/UX Design</span>
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Business Plan</span>
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Front-End</span>
-                </div>
-                <p class="card-text text-secondary small">
-                  Aplikasi jasa antar dan layanan lokal kawasan Toba yang menghubungkan UMKM dengan konsumen kampus secara instan.
-                </p>
-              </div>
-              <div class="mt-3 pt-3 border-top border-light-subtle">
-                <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#modalTobaSatSet">
-                  <i class="bi bi-eye-fill me-1"></i> Detail Proyek
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Kartu 3: SI Loket Parisma Jaya -->
-        <div class="col">
-          <div class="card h-100 project-card shadow-sm border-0">
-            <div class="project-card-header project-header-indigo text-white p-3 d-flex justify-content-between align-items-start">
-              <div>
-                <span class="badge bg-light text-dark fw-bold mb-2">Enterprise SI</span>
-                <h3 class="h6 fw-bold mb-0">Loket Parisma Jaya</h3>
-              </div>
-              <i class="bi bi-bus-front fs-3 opacity-75"></i>
-            </div>
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <div class="d-flex flex-wrap gap-1 mb-2">
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Anaprancis</span>
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">BPMN 2.0</span>
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Database Design</span>
-                </div>
-                <p class="card-text text-secondary small">
-                  Perancangan dan pemodelan sistem informasi manajemen pemesanan tiket bus dan kargo PT Parisma Jaya Trans Balige.
-                </p>
-              </div>
-              <div class="mt-3 pt-3 border-top border-light-subtle">
-                <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#modalParismaJaya">
-                  <i class="bi bi-eye-fill me-1"></i> Detail Proyek
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Kartu 4: Imunisasi Anak App -->
-        <div class="col">
-          <div class="card h-100 project-card shadow-sm border-0">
-            <div class="project-card-header project-header-purple text-white p-3 d-flex justify-content-between align-items-start">
-              <div>
-                <span class="badge bg-light text-dark fw-bold mb-2">HealthTech UI</span>
-                <h3 class="h6 fw-bold mb-0">Jadwal Imunisasi Anak</h3>
-              </div>
-              <i class="bi bi-heart-pulse fs-3 opacity-75"></i>
-            </div>
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <div class="d-flex flex-wrap gap-1 mb-2">
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Figma Design</span>
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">UX Research</span>
-                  <span class="badge bg-info-subtle text-dark border border-info-subtle">Design System</span>
-                </div>
-                <p class="card-text text-secondary small">
-                  Desain antarmuka aplikasi pemantauan dan pengingat jadwal vaksinasi berkala balita Indonesia berbasis pedoman IDAI.
-                </p>
-              </div>
-              <div class="mt-3 pt-3 border-top border-light-subtle">
-                <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#modalImunisasi">
-                  <i class="bi bi-eye-fill me-1"></i> Detail Proyek
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <!-- Container Grid Kartu Proyek Dinamis (4 UI States Managed) -->
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-4" id="projectsContainer">
+        <!-- Injeksi Dinamis via JavaScript -->
       </div>
     </section>
 
@@ -426,7 +312,7 @@
     </section>
 
     <!-- ========================================================================
-         SEKSI 3: SERTIFIKAT & PENGHARGAAN (BOOTSTRAP GRID & MODALS)
+         SEKSI 3: SERTIFIKAT & PENGHARGAAN
          ======================================================================== -->
     <section id="sertifikat" class="content-section-card mb-4 p-4">
       <div class="section-title-wrap mb-4">
@@ -518,7 +404,7 @@
           </div>
         </div>
 
-        <!-- Sertifikat 4: Del English Club -->
+        <!-- Sertifikat 4 -->
         <div class="col">
           <div class="card h-100 cert-card shadow-sm border-0">
             <div class="cert-img-container">
@@ -548,20 +434,31 @@
     </section>
 
     <!-- ========================================================================
-         SEKSI 4: MODERNISASI FORMULIR LAYANAN (MODUL REQUIREMENT 4)
-         Floating Labels, Input Groups, Validasi Visual Bootstrap 5
+         SEKSI 4: KATALOG LAYANAN & FORMULIR ASINKRON REST (DECOUPLED DISPATCH)
          ======================================================================== -->
     <section id="services" class="content-section-card mb-4 p-4 p-md-5">
       <div class="section-title-wrap mb-4">
-        <h2 class="h4 fw-bold text-dark mb-1">
-          <i class="bi bi-envelope-paper-heart-fill text-primary me-2"></i> Formulir Konsultasi & Layanan IT
-        </h2>
-        <p class="text-muted small mb-0">
-          Lengkapi formulir terstandardisasi di bawah ini untuk memulai kerjasama, konsultasi antarmuka, atau pembuatan aplikasi web.
-        </p>
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+          <div>
+            <h2 class="h4 fw-bold text-dark mb-1">
+              <i class="bi bi-envelope-paper-heart-fill text-primary me-2"></i> Paket Layanan
+            </h2>
+            <p class="text-muted small mb-0">
+              Lengkapi formulir terstandardisasi di bawah ini. Pengiriman dikelola secara asinkron (AJAX/Fetch POST) dengan DTO JSON & Toast Notification.
+            </p>
+          </div>
+          <span id="orderCountBadge" class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill fw-bold d-none">
+            0 Pesanan Tersimpan
+          </span>
+        </div>
       </div>
 
-      <!-- Form dengan validasi HTML5/Bootstrap 5 -->
+      <!-- Katalog Paket Layanan Dinamis (Provider: data/services.json) -->
+      <div class="row g-3 mb-4" id="servicesContainer">
+        <!-- Injeksi Dinamis via JavaScript -->
+      </div>
+
+      <!-- Form dengan validasi HTML5/Bootstrap 5 & Asynchronous REST Dispatch -->
       <form class="needs-validation custom-bootstrap-form" novalidate id="serviceInquiryForm" action="#" method="POST">
         
         <!-- Fieldset 1: Data Identitas -->
@@ -573,7 +470,7 @@
           </div>
 
           <div class="row g-3">
-            <!-- Nama Lengkap (Floating Label + Input Group) -->
+            <!-- Nama Lengkap -->
             <div class="col-12 col-md-6">
               <label for="floatingNama" class="form-label small fw-bold text-secondary mb-1">
                 Nama Lengkap Pemohon <span class="text-danger">*</span>
@@ -591,7 +488,7 @@
               </div>
             </div>
 
-            <!-- Email Kampus / Resmi (Floating Label + Input Group) -->
+            <!-- Email Kampus / Resmi -->
             <div class="col-12 col-md-6">
               <label for="floatingEmail" class="form-label small fw-bold text-secondary mb-1">
                 Alamat Email Resmi <span class="text-danger">*</span>
@@ -609,7 +506,7 @@
               </div>
             </div>
 
-            <!-- Nomor WhatsApp (Floating Label + Input Group) -->
+            <!-- Nomor WhatsApp -->
             <div class="col-12 col-md-6">
               <label for="floatingPhone" class="form-label small fw-bold text-secondary mb-1">
                 Nomor WhatsApp / Kontak <span class="text-danger">*</span>
@@ -627,7 +524,7 @@
               </div>
             </div>
 
-            <!-- Tipe Organisasi / Pemohon (Radio Buttons) -->
+            <!-- Kategori Pemohon -->
             <div class="col-12 col-md-6">
               <label class="form-label small fw-bold text-secondary mb-2 d-block">
                 Kategori Entitas Pemohon <span class="text-danger">*</span>
@@ -665,7 +562,7 @@
           </div>
 
           <div class="row g-3">
-            <!-- Kategori Layanan (Select + Floating Label) -->
+            <!-- Kategori Layanan (Opsi Dimuat Dinamis via app.js) -->
             <div class="col-12 col-md-6">
               <label for="floatingLayanan" class="form-label small fw-bold text-secondary mb-1">
                 Paket Layanan Utama <span class="text-danger">*</span>
@@ -677,10 +574,6 @@
                 <div class="form-floating flex-grow-1">
                   <select class="form-select border-start-0" id="floatingLayanan" name="layanan" required>
                     <option value="" selected disabled>Pilih salah satu layanan...</option>
-                    <option value="uiux">1. UI/UX Design & Figma High-Fidelity Prototype</option>
-                    <option value="frontend">2. Front-End Web Development (Bootstrap 5 & Clean Code)</option>
-                    <option value="analisis">3. Analisis Kebutuhan Sistem & Pemodelan BPMN</option>
-                    <option value="fullstack">4. Konsultasi & Pengujian Aksesibilitas WCAG 2.2</option>
                   </select>
                   <label for="floatingLayanan">Pilih Kategori Layanan</label>
                   <div class="invalid-feedback">Silakan pilih salah satu kategori layanan.</div>
@@ -689,7 +582,7 @@
               </div>
             </div>
 
-            <!-- Target Estimasi Waktu (Input Group) -->
+            <!-- Target Estimasi Waktu -->
             <div class="col-12 col-md-6">
               <label for="floatingTimeline" class="form-label small fw-bold text-secondary mb-1">
                 Target Tenggat Waktu (Timeline)
@@ -709,7 +602,7 @@
               </div>
             </div>
 
-            <!-- Opsi Tambahan (Checkbox Group) -->
+            <!-- Opsi Tambahan -->
             <div class="col-12">
               <label class="form-label small fw-bold text-secondary mb-2 d-block">
                 Fitur Tambahan yang Diinginkan:
@@ -742,7 +635,7 @@
               </div>
             </div>
 
-            <!-- Deskripsi Detail Kebutuhan (Floating Textarea) -->
+            <!-- Deskripsi Detail Kebutuhan -->
             <div class="col-12">
               <label for="floatingPesan" class="form-label small fw-bold text-secondary mb-1">
                 Deskripsi Ruang Lingkup Proyek <span class="text-danger">*</span>
@@ -760,7 +653,7 @@
               </div>
             </div>
 
-            <!-- Checkbox Persetujuan Syarat & Ketentuan (Wajib) -->
+            <!-- Checkbox Persetujuan Syarat & Ketentuan -->
             <div class="col-12 mt-3">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="checkSyarat" required>
@@ -776,7 +669,7 @@
         <!-- Submit Button -->
         <div class="text-end">
           <button class="btn btn-primary px-4 py-2 fw-bold shadow-sm" type="submit">
-            <i class="bi bi-send-check me-1"></i> Kirim Permintaan Konsultasi Resmi
+            <i class="bi bi-send-check me-1"></i> Kirim Permintaan Layanan
           </button>
         </div>
       </form>
@@ -811,7 +704,7 @@
 
       <p class="small text-muted mb-0">
         <i class="bi bi-universal-access-circle text-primary me-1"></i>
-        Dirancang dan diuji dengan kepatuhan standar aksesibilitas <strong>WCAG 2.2 Level AA</strong> serta Bootstrap 5 Responsive Grid.
+        Dirancang dan diuji dengan kepatuhan standar aksesibilitas <strong>WCAG 2.2 Level AA</strong> serta Decoupled Multi-Tier CSR Architecture.
       </p>
     </aside>
 
@@ -830,272 +723,109 @@
         NIM: 12S24018 • Program Studi Sarjana Sistem Informasi • Institut Teknologi Del
       </p>
       <p class="small text-secondary mb-0">
-        &copy; 2026 Pemrograman & Pengujian Web (12S3101). Seluruh hak cipta dilindungi.
+        &copy; 2026 Pemrograman & Pengujian Web (12S3101) - Modul 04 Decoupled CSR Architecture.
       </p>
     </div>
   </footer>
 
   <!-- ========================================================================
-       BOOTSTRAP 5 MODALS (MODAL DIALOG PROYEK & SERTIFIKAT)
-       Minimal 2 modal dengan konten berbeda (Modul Requirement 3 & 6)
+       UNIVERSAL DYNAMIC BOOTSTRAP 5 MODAL (TEPAT 1 ELEMEN UNTUK SELURUH PROYEK)
        ======================================================================== -->
-
-  <!-- Modal 1: DelOlympic -->
-  <div class="modal fade" id="modalDelOlympic" tabindex="-1" aria-labelledby="modalDelOlympicLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content rounded-4 border-0 shadow-lg">
+  <div class="modal fade" id="universalProjectModal" tabindex="-1" aria-labelledby="universalProjectModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4">
         <div class="modal-header bg-primary text-white rounded-top-4">
-          <h1 class="modal-title fs-5 fw-bold" id="modalDelOlympicLabel">
-            <i class="bi bi-trophy-fill me-2"></i> DelOlympic Competition Portal
-          </h1>
+          <h5 class="modal-title fw-bold" id="universalProjectModalTitle">Judul Proyek</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
         </div>
-        <div class="modal-body p-4">
-          <div class="badge bg-primary-subtle text-primary border border-primary-subtle mb-3 px-3 py-1 rounded-pill fw-semibold">
-            Kategori: Web Application • PPW 2026/2027
-          </div>
-          <h2 class="h6 fw-bold text-dark mb-2">Deskripsi Proyek</h2>
-          <p class="text-secondary small">
-            DelOlympic adalah sistem informasi kompetisi dan olimpiade berbasis web yang memfasilitasi mahasiswa Institut Teknologi Del dalam mendaftar berbagai cabang perlombaan akademik dan non-akademik, memantau jadwal pertandingan secara real-time, serta melihat papan peringkat skor terkini secara otomatis.
-          </p>
-          <h2 class="h6 fw-bold text-dark mb-2">Fitur Utama</h2>
-          <ul class="text-secondary small ps-3 mb-3">
-            <li>Autentikasi akun peserta dan panitia berbasis multi-role.</li>
-            <li>Manajemen pendaftaran tim dan verifikasi berkas daring.</li>
-            <li>Papan skor interaktif dengan pembaruan dinamis.</li>
-            <li>Desain antarmuka responsif berstandar Bootstrap 5.3.</li>
-          </ul>
-          <h2 class="h6 fw-bold text-dark mb-2">Teknologi yang Digunakan</h2>
-          <div class="d-flex flex-wrap gap-1">
-            <span class="badge bg-light text-dark border">Bootstrap 5.3</span>
-            <span class="badge bg-light text-dark border">CSS Custom Properties</span>
-            <span class="badge bg-light text-dark border">PHP Native & MySQL</span>
-            <span class="badge bg-light text-dark border">Bootstrap Icons</span>
-          </div>
+        <div class="modal-body p-4" id="universalProjectModalBody">
+          <!-- Konten diinjeksi secara dinamis via app.js (openUniversalProjectModal) -->
         </div>
-        <div class="modal-footer bg-light rounded-bottom-4">
-          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+        <div class="modal-footer bg-light rounded-bottom-4 py-2">
+          <button type="button" class="btn btn-secondary btn-sm fw-semibold" data-bs-dismiss="modal">Tutup</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal 2: TobaSatSet -->
-  <div class="modal fade" id="modalTobaSatSet" tabindex="-1" aria-labelledby="modalTobaSatSetLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content rounded-4 border-0 shadow-lg">
-        <div class="modal-header bg-info-subtle text-info-emphasis rounded-top-4 border-bottom">
-          <h1 class="modal-title fs-5 fw-bold" id="modalTobaSatSetLabel">
-            <i class="bi bi-shop me-2"></i> TobaSatSet Local Service Solution
-          </h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-        </div>
-        <div class="modal-body p-4">
-          <div class="badge bg-info-subtle text-info-emphasis border border-info-subtle mb-3 px-3 py-1 rounded-pill fw-semibold">
-            Kategori: Technopreneurship & Business Platform
-          </div>
-          <h2 class="h6 fw-bold text-dark mb-2">Ringkasan Konsep</h2>
-          <p class="text-secondary small">
-            TobaSatSet adalah platform layanan terpadu yang dirancang untuk mengatasi permasalahan mobilitas dan akses pemesanan makanan serta kebutuhan pokok di lingkungan kampus IT Del dan sekitarnya di kawasan Danau Toba.
-          </p>
-          <h2 class="h6 fw-bold text-dark mb-2">Modul & Solusi Utama</h2>
-          <ul class="text-secondary small ps-3 mb-3">
-            <li>Katalog menu interaktif dari mitra warung makan dan toko lokal.</li>
-            <li>Kalkulator ongkos kirim transparan berbasis jarak kampus.</li>
-            <li>Integrasi notifikasi pesan instan WhatsApp Gateway.</li>
-          </ul>
-          <h2 class="h6 fw-bold text-dark mb-2">Tech Stack & Tools</h2>
-          <div class="d-flex flex-wrap gap-1">
-            <span class="badge bg-light text-dark border">Figma UI Prototype</span>
-            <span class="badge bg-light text-dark border">HTML5 Semantik</span>
-            <span class="badge bg-light text-dark border">Modern CSS Grid/Flex</span>
-          </div>
-        </div>
-        <div class="modal-footer bg-light rounded-bottom-4">
-          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 3: Parisma Jaya -->
-  <div class="modal fade" id="modalParismaJaya" tabindex="-1" aria-labelledby="modalParismaJayaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content rounded-4 border-0 shadow-lg">
-        <div class="modal-header bg-primary text-white rounded-top-4">
-          <h1 class="modal-title fs-5 fw-bold" id="modalParismaJayaLabel">
-            <i class="bi bi-bus-front-fill me-2"></i> SI Loket PT. Parisma Jaya Trans Balige
-          </h1>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
-        </div>
-        <div class="modal-body p-4">
-          <div class="badge bg-primary-subtle text-primary border border-primary-subtle mb-3 px-3 py-1 rounded-pill fw-semibold">
-            Kategori: Enterprise Information System (Anaprancis)
-          </div>
-          <h2 class="h6 fw-bold text-dark mb-2">Deskripsi & Ruang Lingkup</h2>
-          <p class="text-secondary small">
-            Proyek analisis dan perancangan sistem informasi loket transportasi antarkota PT Parisma Jaya Trans di Balige. Merumuskan alur bisnis pemesanan tiket, pengelolaan armada bus, pembagian kursi otomatis, dan pencatatan manifest kargo barang.
-          </p>
-          <h2 class="h6 fw-bold text-dark mb-2">Deliverables</h2>
-          <ul class="text-secondary small ps-3 mb-3">
-            <li>Diagram BPMN 2.0 proses bisnis As-Is & To-Be.</li>
-            <li>Dokumen spesifikasi kebutuhan perangkat lunak (SKPL/SRS).</li>
-            <li>Diagram Entity Relationship (ERD) dan Logical Relational Structure.</li>
-            <li>Rancangan antarmuka kasir loket berbasis web cepat.</li>
-          </ul>
-        </div>
-        <div class="modal-footer bg-light rounded-bottom-4">
-          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 4: Imunisasi Anak -->
-  <div class="modal fade" id="modalImunisasi" tabindex="-1" aria-labelledby="modalImunisasiLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content rounded-4 border-0 shadow-lg">
-        <div class="modal-header bg-danger-subtle text-danger-emphasis rounded-top-4 border-bottom">
-          <h1 class="modal-title fs-5 fw-bold" id="modalImunisasiLabel">
-            <i class="bi bi-heart-pulse-fill me-2"></i> Aplikasi Jadwal Imunisasi Anak Indonesia
-          </h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-        </div>
-        <div class="modal-body p-4">
-          <div class="badge bg-danger-subtle text-danger border border-danger-subtle mb-3 px-3 py-1 rounded-pill fw-semibold">
-            Kategori: UI/UX HealthTech & User Centered Design
-          </div>
-          <h2 class="h6 fw-bold text-dark mb-2">Latar Belakang & Nilai Manfaat</h2>
-          <p class="text-secondary small">
-            Perancangan pengalaman pengguna untuk membantu orang tua Indonesia mencatat riwayat vaksinasi bayi dan balita secara akurat sesuai anjuran Ikatan Dokter Anak Indonesia (IDAI), dilengkapi sistem peringatan dini jadwal posyandu/puskesmas terdekat.
-          </p>
-          <h2 class="h6 fw-bold text-dark mb-2">Karakteristik Desain</h2>
-          <ul class="text-secondary small ps-3 mb-3">
-            <li>Desain antarmuka ramah ibu dan anak dengan palet warna pastel menenangkan.</li>
-            <li>Tingkat keterbacaan tinggi dan navigasi satu tangan yang ergonomis.</li>
-            <li>Prototyping interaktif dengan pengujian usability testing 85% kepuasan pengguna.</li>
-          </ul>
-        </div>
-        <div class="modal-footer bg-light rounded-bottom-4">
-          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Sertifikat 1: Bronze Medal PIN 2 -->
-  <div class="modal fade" id="modalCertBronze" tabindex="-1" aria-labelledby="modalCertBronzeLabel" aria-hidden="true">
+  <!-- MODAL LIGHTBOX SERTIFIKAT PREVIEW -->
+  <div class="modal fade" id="modalCertBronze" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content rounded-4 border-0 shadow-lg">
         <div class="modal-header bg-light border-bottom">
-          <h1 class="modal-title fs-6 fw-bold text-dark" id="modalCertBronzeLabel">
-            🥉 Bronze Medal – Lomba Essay Nasional PIN 2
-          </h1>
+          <h5 class="modal-title fs-6 fw-bold text-dark">🥉 Bronze Medal – Lomba Essay Nasional PIN 2</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
         </div>
         <div class="modal-body text-center p-3">
           <img src="sertif_bronze.png" alt="Sertifikat Bronze Medal PIN 2" class="img-fluid rounded-3 shadow-sm mb-3">
-          <p class="text-secondary small mb-1 text-start">
-            <strong>Penyelenggara:</strong> Lembaga Setara Prisma Nusantara bekerjasama dengan Fakultas Pertanian Universitas Muhammadiyah Mataram dan Universitas Nahdlatul Wathan.
-          </p>
+          <p class="text-secondary small mb-1 text-start"><strong>Penyelenggara:</strong> Lembaga Setara Prisma Nusantara & FAPERTA UMMAT.</p>
           <p class="text-primary small fw-semibold mb-0 text-start">📅 4 – 6 Juli 2026 • Lombok, NTB</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal Sertifikat 2: Medali Emas POSI -->
-  <div class="modal fade" id="modalCertGold" tabindex="-1" aria-labelledby="modalCertGoldLabel" aria-hidden="true">
+  <div class="modal fade" id="modalCertGold" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content rounded-4 border-0 shadow-lg">
         <div class="modal-header bg-light border-bottom">
-          <h1 class="modal-title fs-6 fw-bold text-dark" id="modalCertGoldLabel">
-            🥇 Medali Emas – Pekan Olimpiade Sains Indonesia (POSI)
-          </h1>
+          <h5 class="modal-title fs-6 fw-bold text-dark">🥇 Medali Emas – Pekan Olimpiade Sains Indonesia (POSI)</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
         </div>
         <div class="modal-body text-center p-3">
           <img src="sertif_emas.jpg" alt="Piagam Medali Emas POSI" class="img-fluid rounded-3 shadow-sm mb-3">
-          <p class="text-secondary small mb-1 text-start">
-            <strong>Penyelenggara:</strong> Academy Berprestasi Indonesia bidang Bahasa Inggris Tingkat Perguruan Tinggi Nasional.
-          </p>
+          <p class="text-secondary small mb-1 text-start"><strong>Penyelenggara:</strong> Academy Berprestasi Indonesia.</p>
           <p class="text-primary small fw-semibold mb-0 text-start">📅 2 Agustus 2026 • Tingkat Nasional</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal Sertifikat 3: IPB University -->
-  <div class="modal fade" id="modalCertIPB" tabindex="-1" aria-labelledby="modalCertIPBLabel" aria-hidden="true">
+  <div class="modal fade" id="modalCertIPB" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content rounded-4 border-0 shadow-lg">
         <div class="modal-header bg-light border-bottom">
-          <h1 class="modal-title fs-6 fw-bold text-dark" id="modalCertIPBLabel">
-            📜 Sertifikat Peserta – IPB University
-          </h1>
+          <h5 class="modal-title fs-6 fw-bold text-dark">📜 Sertifikat Peserta – IPB University</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
         </div>
         <div class="modal-body text-center p-3">
           <img src="sertif_ipb.png" alt="Sertifikat Peserta IPB University" class="img-fluid rounded-3 shadow-sm mb-3">
-          <p class="text-secondary small mb-1 text-start">
-            <strong>Kegiatan:</strong> Agricultural Technology Innovation & Creative Competition 1.0 Fakultas Peternakan IPB University.
-          </p>
-          <p class="text-primary small fw-semibold mb-0 text-start">📅 23 Mei 2026 • Institut Pertanian Bogor</p>
+          <p class="text-secondary small mb-1 text-start"><strong>Kegiatan:</strong> Agricultural Technology Innovation 1.0 IPB.</p>
+          <p class="text-primary small fw-semibold mb-0 text-start">📅 23 Mei 2026 • IPB University</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal Sertifikat 4: Del English Club -->
-  <div class="modal fade" id="modalCertDEC" tabindex="-1" aria-labelledby="modalCertDECLabel" aria-hidden="true">
+  <div class="modal fade" id="modalCertDEC" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content rounded-4 border-0 shadow-lg">
         <div class="modal-header bg-light border-bottom">
-          <h1 class="modal-title fs-6 fw-bold text-dark" id="modalCertDECLabel">
-            🎖️ Certificate of Participation – Del English Club (DEC)
-          </h1>
+          <h5 class="modal-title fs-6 fw-bold text-dark">🎖️ Certificate of Participation – Del English Club (DEC)</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
         </div>
         <div class="modal-body text-center p-3">
           <img src="sertif_dec.jpg" alt="Sertifikat Member of Del English Club" class="img-fluid rounded-3 shadow-sm mb-3">
-          <p class="text-secondary small mb-1 text-start">
-            <strong>Pemberi Sertifikat:</strong> UPT Bahasa Institut Teknologi Del & Del English Club (DEC).
-          </p>
-          <p class="text-secondary small mb-1 text-start">
-            <strong>Keterangan:</strong> In recognition of exemplary service and dedication as the Member of Del English Club for the 2024/2025 period.
-          </p>
+          <p class="text-secondary small mb-1 text-start"><strong>Pemberi Sertifikat:</strong> UPT Bahasa Institut Teknologi Del & DEC.</p>
           <p class="text-primary small fw-semibold mb-0 text-start">📅 Periode 2024/2025 • Institut Teknologi Del</p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FIXED TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastNotificationContainer"></div>
+
   <!-- ========================================================================
-       5. BOOTSTRAP 5.3 JS BUNDLE (CDN) & CLIENT-SIDE VALIDATION SCRIPT
+       5. BOOTSTRAP 5.3 JS BUNDLE & DECOUPLED SCRIPTS
        ======================================================================== -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- Data Access Layer (DAL) -->
+  <script src="js/api-service.js"></script>
 
-  <script>
-    // Inisialisasi Validasi Visual Form Standar Bootstrap 5 (Modul Requirement 4)
-    (function () {
-      'use strict'
-      const forms = document.querySelectorAll('.needs-validation');
-      Array.from(forms).forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          } else {
-            event.preventDefault();
-            alert('Terima kasih! Formulir konsultasi Anda berhasil tervalidasi dan terkirim.');
-            form.reset();
-            form.classList.remove('was-validated');
-            return false;
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    })();
-  </script>
+  <!-- Presentation Layer (DOM Controller & Event Handler) -->
+  <script src="js/app.js"></script>
 </body>
 </html>
+

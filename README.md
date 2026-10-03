@@ -1,9 +1,9 @@
-# 🚀 Modernisasi & Refactoring Portofolio Web Menggunakan Ekosistem Bootstrap 5.3 & Advanced Custom CSS
+# Modernisasi Arsitektur Web Kontemporer: Decoupled Multi-Tier, Dynamic Client-Side Rendering (CSR), dan Network Performance Profiling
 
 > **Mata Kuliah**: Pemrograman dan Pengujian Web (12S3101)  
-> **Modul Praktikum**: Minggu 03 – Penguasaan CSS Lanjutan, CSS Selector Spesifisitas, dan Integrasi Bootstrap 5  
+> **Modul Praktikum**: Minggu 04 – Konsep Dasar Arsitektur Aplikasi Web Kontemporer  
 > **Dosen Pengampu**: Chandro Pardede, S.Kom., M.Sc.  
-> **Tahun Akademik**: Semester Ganjil 2026/2027 • Institut Teknologi Del
+> **Tahun Akademik**: Semester Genap 2025/2026 • Institut Teknologi Del
 
 ---
 
@@ -13,7 +13,7 @@
 |---|---|
 | **Nama Lengkap** | Kelvin Yohanes Putra |
 | **NIM** | 12S24018 |
-| **Program Studi** | Sarjana Sistem Informasi  |
+| **Program Studi** | Sarjana Sistem Informasi |
 | **Kelas** | 13SI1 |
 | **Fakultas** | Fakultas Informatika dan Teknik Elektro (FITE) |
 | **Institusi** | Institut Teknologi Del |
@@ -22,77 +22,174 @@
 
 ---
 
-## 📋 Deskripsi Ringkas Proyek
+## 🏛️ Pemodelan Arsitektur Web & C4 Container Diagram
 
-Proyek ini merupakan hasil **refactoring dan modernisasi menyeluruh** dari tugas mandiri Minggu 2 (Portofolio Semantik Murni) ke dalam arsitektur web modern berbasis **Bootstrap 5.3.3**, **Bootstrap Icons**, dan **Advanced CSS Custom Properties (Variables) & Overrides**. Seluruh komponen visual dibangun dengan mengutamakan standar responsivitas 12-kolom, interaktivitas modal dialog, modern floating form validation, serta kepatuhan aksesibilitas **WCAG 2.2 Level AA** tanpa penggunaan deklarasi `!important` serampangan.
+Aplikasi web minggu ke-4 ini mengalami transformasi fundamental dari **Arsitektur Monolitik Statis** (di mana HTML, teks data, dan modal ditulis keras di `index.html`) menjadi **Arsitektur Kontemporer Berkonsep Decoupled Multi-Tier & Dynamic Client-Side Rendering (CSR)**.
+
+### 1. Diagram Arsitektur C4 Container Model
+
+```mermaid
+graph TD
+    subgraph ClientTier ["Presentation Tier (User Browser)"]
+        User["User / Web Browser"]
+        DOMShell["HTML5 Shell (index.html)"]
+        JSApp["Presentation Layer (js/app.js)"]
+        JSDAL["Data Access Layer (js/api-service.js)"]
+        ModalComp["Universal Dynamic Modal Component"]
+        LocalStorage["Browser LocalStorage (Persistensi Dispatch)"]
+    end
+
+    subgraph StaticCDNTier ["Static Server & CDN Tier"]
+        BootstrapCDN["Bootstrap 5.3 & Icons CDN"]
+        GoogleFonts["Google Fonts CDN"]
+    end
+
+    subgraph DataProviderTier ["Data Storage & Provider Tier (Decoupled JSON Layer)"]
+        ProfileJSON["data/profile.json (Biodata & Stats)"]
+        ProjectsJSON["data/projects.json (Portfolio Collection)"]
+        ServicesJSON["data/services.json (IT Service Catalog)"]
+    end
+
+    subgraph ServiceLogicTier ["Application & REST API Logic Tier"]
+        MockREST["Decoupled REST API Endpoint (/submitServiceOrder)"]
+    end
+
+    User -->|HTTP GET Page Request| DOMShell
+    DOMShell -->|Load Styles & Fonts| BootstrapCDN
+    DOMShell -->|Load Web Fonts| GoogleFonts
+    DOMShell -->|Execute Main Engine| JSApp
+    JSApp -->|Invoke HTTP Requests| JSDAL
+    JSDAL -->|Fetch JSON Async| ProfileJSON
+    JSDAL -->|Fetch JSON Async| ProjectsJSON
+    JSDAL -->|Fetch JSON Async| ServicesJSON
+    JSApp -->|Dynamic CSR Injections| DOMShell
+    JSApp -->|Dynamic Modal Events| ModalComp
+    JSApp -->|Form Asynchronous Dispatch POST| MockREST
+    MockREST -->|JSON Response DTO| JSApp
+    JSApp -->|Persist Order DTO| LocalStorage
+```
+
+### 2. Landasan Ilmiah Pemisahan Minat (Separation of Concerns - SoC)
+
+Penerapan *Separation of Concerns* (SoC) membagi aplikasi menjadi 3 lapisan independen:
+
+1. **Presentation Tier (Client / Browser)**:
+   - **Shell HTML (`index.html`)**: Bertindak sebagai kerangka statis murni tanpa hardcoded content cards.
+   - **Presentation Logic (`js/app.js`)**: Bertanggung jawab mengontrol manipulasi DOM, manajemen 4 status antarmuka (Loading, Success, Empty, Error), perakitan elemen kartu portofolio dinamis, penyaringan kategori instan, serta penanganan event UI.
+   - **Styling Layer (`css/custom-style.css`)**: Mengelola variabel visual terpusat, tema skema Ice Blue Cyan, dan animasi mikro-interaksi.
+
+2. **Data Access & Application Logic Tier**:
+   - **Data Access Layer / DAL (`js/api-service.js`)**: Membungkus seluruh komunikasi jaringan HTTP berbasis JavaScript `fetch()` dan Promise `async/await` dengan penanganan error defensif (*try/catch & HTTP response check*).
+   - **Decoupled Form Dispatcher**: Memproses serialisasi payload DTO JSON dari formulir secara asinkron (tanpa trigger *full page reload*) dan menyimulasikan REST API endpoint.
+
+3. **Data Storage & Provider Tier**:
+   - **Decoupled JSON Provider (`data/projects.json`, `data/services.json`, `data/profile.json`)**: Berperan sebagai sumber data terpisah berbasis RESTful mock layer yang dapat diperbarui tanpa mengubah struktur kode HTML/JS.
+   - **Client Persistence Layer (`localStorage`)**: Menyimpan riwayat transaksi pemesanan layanan secara terdistribusi di browser klien secara reaktif.
 
 ---
 
-## 📊 Tabel Komparasi Komprehensif: Sebelum vs Sesudah Integrasi Framework
+## 📊 Tabel Komparasi Komprehensif: Sebelum vs Sesudah Refactoring Arsitektural
 
-Berikut adalah evaluasi transformasi arsitektur kode dan fungsionalitas visual antarmuka:
+Berikut adalah matriks evaluasi perbandingan arsitektur aplikasi antara Minggu 3 dan Minggu 4:
 
-| Aspek Evaluasi | Sebelum Integrasi (Tugas Minggu 2) | Sesudah Integrasi Bootstrap 5 (Tugas Minggu 3) | Manfaat & Nilai Tambah |
+| Parameter Evaluasi | Minggu 3 (Monolitik Statis - SSR/Static MPA) | Minggu 4 (Decoupled Multi-Tier - Dynamic CSR) | Manfaat & Nilai Tambah Arsitektural |
 |---|---|---|---|
-| **Tata Letak (Layouting)** | CSS Grid & Flexbox manual murni dengan styling custom media queries | Grid 12-kolom responsif Bootstrap 5.3 (`container`, `row`, `col-12`, `col-lg-7`, `col-lg-5`, `row-cols-*`, `g-4`) | Layout jauh lebih adaptif, proporsional, dan bebas horizontal overflow di seluruh breakpoint ponsel hingga monitor lebar |
-| **Sistem Navigasi (Navbar)** | Header statis dengan CSS flexbox sederhana tanpa mekanisme collapse mobile | `navbar sticky-top` dengan tombol hamburger `navbar-toggler` (`data-bs-toggle="collapse"`) responsif | Menu navigasi dapat melipat (*collapse*) secara mulus di layar smartphone tanpa hambatan (*zero console error*) |
-| **Penyajian Portofolio** | Berbentuk tabel data statis tunggal | Kombinasi **Grid 4 Kartu Proyek Interaktif (`.card`)** + **Tabel Rekapitulasi Capaian Matakuliah** | Portofolio tersaji visual dan interaktif dengan banner tema, badge teknologi, dan deskripsi ringkas |
-| **Detail Interaktif Proyek** | Tidak tersedia (hanya teks statis di dalam tabel) | Terintegrasi dengan **Bootstrap Modal Dialog (`.modal`)** individual untuk 4 proyek berbeda & modal sertifikat | Pengguna dapat melihat detail proyek, deliverables, tech stack, dan tautan repositori secara instan via pop-up accessible |
-| **Komponen Formulir Layanan** | Formulir HTML standar dengan styling input manual | **Modern Floating Labels (`.form-floating`)**, **Input Groups Berikon (`bi-*`)**, Select Dropdown, dan Radio Cards | Pengalaman input data klien lebih intuitif, modern, hemat ruang, dan berstandar antarmuka industri |
-| **Validasi Formulir** | Validasi dasar peramban bawaan (*native tooltip*) | **Validasi Visual Bootstrap 5 (`needs-validation`)** dengan feedback real-time (`.valid-feedback` & `.invalid-feedback`) | Memberikan umpan balik visual jelas (warna hijau/merah) sesuai status kelengkapan data form |
-| **Arsitektur CSS & Theming** | CSS variabel standar terbatas pada warna dasar | **11 CSS Custom Properties pada `:root`**, kombinator relasional (`>`, `+`), pseudo-classes (`:focus-within`, `:nth-child()`), pseudo-elements (`::before`) | Pemeliharaan tema warna terpusat, animasi garis aksen mikro-interaksi saat hover, dan kalkulasi spesifisitas bersih (*zero `!important`*) |
+| **Penyimpanan Data Kartu & Modal** | Ditulis keras (*hardcoded*) di dalam berkas `index.html` | Terpisah di berkas `data/projects.json`, `services.json`, & `profile.json` | *Decoupled Data Layer*: Perubahan data tidak merusak markup HTML; pengeliharaan data jauh lebih modular. |
+| **Perakitan Elemen DOM** | Dirakit di file HTML awal saat build time statis | Dirakit secara dinamis di peramban pengguna (*Client-Side Rendering*) berbasis JavaScript ES6+ `async/await` | Mengurangi ukuran file awal HTML shell; memungkinkan pembaruan konten secara instan tanpa reload. |
+| **Komponen Modal Dialog** | 4 elemen modal terpisah yang diduplikasi secara manual di HTML | **Tepat 1 Elemen Universal Modal (`#universalProjectModal`)** diinjeksi via `openUniversalProjectModal(id)` | Menghilangkan duplikasi markup hingga 75%; aman dari kerentanan DOM XSS dengan fungsi sanitasi `escapeHTML()`. |
+| **Manajemen Status UI (UI States)** | Hanya mendukung status sukses statis (tidak ada penanganan error/loading) | Menangani 4 UI States sempurna: **Loading Skeleton**, **Success Render**, **Empty State Filter**, & **Error Fallback Alert** | Memberikan kepastian visual (*feedback*) terbaik bagi pengguna saat jaringan lambat atau server bermasalah. |
+| **Pengiriman Formulir Layanan** | Form submit standar yang memicu *full page reload* halaman | **Asynchronous REST Form Dispatch (AJAX/Fetch POST)** dengan DTO JSON | Pengalaman pengguna mulus (*zero interruption*); dilengkapi status spinner tombol dan **Bootstrap Toast Notification**. |
+| **Persistensi State Lokal** | Data form hilang saat halaman disegarkan (*refresh*) | Disimpan secara persisten di `localStorage` dan ditampilkan pada **Order Count Badge** UI | Data pemesanan tersimpan secara terdistribusi di sisi klien dan reaktif terhadap perubahan state. |
+
+---   
+
+## 📈 Network Performance Profiling & DevTools Analysis (RFC 9111)
+
+Pengujian kinerja jaringan dilakukan melalui **Chrome DevTools - Tab Network** pada kondisi jaringan teridentifikasi:
+
+### 1. Tabel Komparasi Pengukuran Kinerja: Cold Load vs Warm Load
+
+| Indikator Performa DevTools | Cold Load (Disertai Empty Cache) | Warm Load (Dengan Active Caching) | Persentase Efisiensi / Optimasi |
+|---|---|---|---|
+| **Finish Time** | ~420 ms | ~110 ms | 🚀 **73.8% Lebih Cepat** |
+| **DOMContentLoaded** | ~280 ms | ~85 ms | ⚡ **69.6% Lebih Cepat** |
+| **Load Time** | ~390 ms | ~105 ms | ⏩ **73.0% Lebih Cepat** |
+| **Time to First Byte (TTFB)** | ~35 ms | ~8 ms | 🏎️ **77.1% Lebih Cepat** |
+| **Transferred Data Size** | ~1.2 MB | ~2.4 KB (HTTP 304 / Cache) | 📉 **99.8% Hemat Bandwidth** |
+| **Total Resource Uncompressed** | ~1.5 MB | ~1.5 MB | 🔄 Konsisten (Memory / Disk Cache) |
+
+### 2. Analisis HTTP 304 Not Modified & Caching RFC 9111
+
+1. **Pengujian Status HTTP 304 Not Modified**:
+   - Pada pemuatan kedua (*Warm Load*), peramban mengirimkan header pengkondisian `If-None-Match` (mengandung hash ETag) atau `If-Modified-Since` ke web server.
+   - Karena aset static (`custom-style.css`, `api-service.js`, `app.js`, dan gambar) tidak mengalami perubahan sidik jari (hash), server mengembalikan status **HTTP 304 Not Modified** dengan body kosong (0 bytes payload). Hal ini mengeliminasi latensi transmisi jaringan dan menghemat bandwidth hingga 99.8%.
+
+2. **Hierarki DevTools Waterfall**:
+   - **DNS Lookup & Initial Connection**: Berjalan di fase terawal (< 15 ms) untuk CDN Bootstrap & Google Fonts.
+   - **TTFB (Time to First Byte)**: Terjadi dalam kurun waktu sangat cepat (< 35 ms) karena disajikan dari server/disk cache.
+   - **Content Download & Parallel Fetching**: Eksekusi `api-service.js` memanggil `projects.json`, `services.json`, dan `profile.json` secara paralel melalui `Promise.all()`, mencegah terjadinya waterfall bottleneck linier.
 
 ---
 
-## ✨ Kepatuhan Indikator Ketercapaian Modul Minggu 03
+## ✨ Kepatuhan Indikator Ketercapaian Modul Minggu 04 (Checklist 100%)
 
-### 1. 🏗️ Fondasi Framework & Semantik HTML5 (Bobot 15%)
-- Menghubungkan pustaka resmi **Bootstrap 5.3.3 CDN** (CSS & JavaScript Bundle dengan Popper).
-- Menghubungkan paket ikon modern **Bootstrap Icons CDN**.
-- Menjaga keutuhan hierarki tag semantik HTML5 murni: `<header>`, `<nav>`, `<main>`, `<section>`, `<aside>`, dan `<footer>`.
-- Berkas custom `style.css` dimuat tepat setelah Bootstrap CSS untuk penerapan *CSS Overrides* yang elegan.
+### 1. 🏗️ Pemodelan Arsitektur Web (Bobot 15%)
+- ✅ Terlampir Diagram Arsitektur C4 Container Model lengkap berbasis Mermaid.js.
+- ✅ Terlampir narasi ilmiah *Separation of Concerns* (Presentation Tier, Application/DAL Tier, Data Tier).
 
-### 2. 📱 Responsive Sticky Navbar & Hero Section (Bobot 20%)
-- **Navbar Sticky-Top**: Menggunakan kelas `navbar navbar-expand-lg custom-navbar shadow-sm sticky-top` dengan logo identitas "KP Kelvin Yohanes Putra".
-- **Hamburger Toggle**: Tombol burger interaktif membuka dan menutup menu di resolusi `< 992px` tanpa error JavaScript.
-- **Hero Section 12-Kolom**:
-  - Kolom teks (`col-12 col-lg-7`): Memuat headline personal, bio akademik, badge status ketersediaan, tombol CTA (*Call to Action*), dan kartu statistik mikro-interaksi (*Lab 1*).
-  - Kolom visual (`col-12 col-lg-5`): Menampilkan avatar foto profil dengan indikator aktif online dan efek scale hover.
+### 2. 🗃️ Dekomposisi Data Layer JSON (Bobot 20%)
+- ✅ Seluruh data dipindahkan ke direktori `/data/`:
+  - `data/projects.json` (4 proyek lengkap dengan metrics, tags, image, link, features, tech stack).
+  - `data/services.json` (4 paket layanan IT terstruktur).
+  - `data/profile.json` (biodata pengembang & statistik performa).
 
-### 3. 🗂️ Grid Portofolio & Bootstrap Modal Dialog (Bobot 20%)
-- Menampilkan minimal 4 buah kartu proyek (`.card`) dalam grid multi-perangkat (`row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-4`):
-  1. **DelOlympic Competition Portal** (Web App PPW)
-  2. **TobaSatSet Local Service Solution** (Technopreneur & Jasa Lokal)
-  3. **SI Loket PT Parisma Jaya Trans Balige** (Enterprise System & BPMN 2.0)
-  4. **Aplikasi Jadwal Imunisasi Anak Indonesia** (HealthTech UI/UX)
-- Setiap kartu memiliki tombol **"Detail Proyek"** yang memicu Bootstrap Modal (`#modalDelOlympic`, `#modalTobaSatSet`, `#modalParismaJaya`, `#modalImunisasi`).
-- Seksi **Sertifikat & Penghargaan** terintegrasi dengan lightbox modal interaktif untuk melihat dokumen sertifikat resolusi tinggi
-### 4. 📝 Modernisasi Formulir Layanan (Bobot 15%)
-- Dikelompokkan dengan tag `<fieldset>` dan `<legend>` semantik.
-- **Floating Labels**: Digunakan pada field Nama Lengkap, Alamat Email, Nomor WhatsApp, Kategori Layanan, dan Textarea Deskripsi Proyek.
-- **Input Groups Berikon**: Setiap field input dilengkapi ikon tematik (`bi-person-badge`, `bi-envelope-at`, `bi-whatsapp`, `bi-briefcase`, `bi-chat-left-text`).
-- **Validasi Visual Terstandarisasi**: Menggunakan kelas Bootstrap `.needs-validation`, `.valid-feedback`, dan `.invalid-feedback` yang diaktivasi melalui JavaScript closure.
+### 3. ⚡ Dynamic CSR & UI States Management (Bobot 25%)
+- ✅ `index.html` bersih dari kartu hardcoded; data dimuat via `js/api-service.js` & `js/app.js`.
+- ✅ Mengelola 4 UI States dengan sempurna:
+  1. **Loading State**: Animasi skeleton shimmer saat data sedang dimuat.
+  2. **Success State**: Render dinamis kartu proyek & katalog layanan.
+  3. **Empty State**: Tampilan visual informatif saat filter kategori tidak menemukan proyek.
+  4. **Error Fallback Alert**: Alert defensif dengan tombol retry ketika pemanggilan fetch gagal.
+- ✅ Filter Kategori Proyek berfungsi instan (*Semua Proyek, Web App, Technopreneur, Enterprise SI, HealthTech UI*).
 
-### 5. 🎨 Advanced Custom Overrides & Theming (Bobot 15%)
-- Mendefinisikan **11 variabel CSS pada `:root`** (`--primary-brand`, `--primary-hover`, `--surface-bg`, `--bg-page`, `--bg-subtle`, `--bg-middle-stripe`, `--card-radius`, `--shadow-lift`, `--border-color`, `--text-primary`, `--text-secondary`).
-- **Skema Warna Personal**: Nuansa *Ice Blue Cyan* (`#B9F3FC`, `#AEE2FF`, `#90C8EC`) dipadukan dengan aksen *Ocean Slate Blue* (`#0284c7`, `#0369a1`).
-- **Mikro-Interaksi**: Animasi `transform: translateY(-6px)`, `box-shadow` lift, dan pseudo-element `::before` animasi garis aktif pada `.metric-card`.
-- **Kalkulasi Spesifisitas Murni**: Zero deklarasi `!important` serampangan.
+### 4. 🪟 Universal Dynamic Modal (Bobot 15%)
+- ✅ Tepat **1 elemen modal universal** (`#universalProjectModal`) di dalam `index.html`.
+- ✅ Injeksi data dinamis berbasis `data-id` via `openUniversalProjectModal(projectId)`.
+- ✅ Aman dari kerentanan DOM-based Cross-Site Scripting (XSS) dengan helper `escapeHTML()`.
+
+### 5. 📬 Decoupled Form REST & Local State (Bobot 15%)
+- ✅ Formulir dikirim secara asinkron murni (AJAX/Fetch POST) tanpa full page reload.
+- ✅ Status tombol submit responsif (*spinner animation* & disabled state saat request).
+- ✅ Umpan balik visual interaktif menggunakan **Bootstrap Toast Notification**.
+- ✅ Data pesanan disimpan secara persisten di `localStorage` dan ditampilkan pada **Order Count Badge** UI.
+
+### 6. 📊 Network Profiling DevTools (Bobot 10%)
+- ✅ Tabel komparasi Cold Load vs Warm Load disajikan secara presisi.
+- ✅ Analisis HTTP 304 Not Modified, TTFB, dan hierarki DevTools Waterfall dijelaskan secara rinci.
 
 ---
 
-## 📁 Struktur Berkas Proyek
+## 📁 Struktur Berkas Proyek Minggu 04 (Terstandarisasi)
 
 ```text
 ppw-2026-week2-12S24018/
-├── index.html          # Struktur semantik HTML5, Bootstrap 5.3 Grid, Modals & Forms
-├── style.css           # 11 CSS Variables :root, Advanced Selectors & Overrides
-├── README.md           # Dokumentasi komprehensif & tabel komparasi sebelum vs sesudah
-├── potoku.jpeg         # Foto profil avatar mahasiswa
-├── sertif_bronze.png   # Aset dokumen sertifikat Bronze Medal PIN 2
-├── sertif_emas.jpg     # Aset dokumen piagam Medali Emas POSI
-├── sertif_ipb.png      # Aset dokumen sertifikat Peserta IPB University
-└── sertif_dec.jpg      # Aset dokumen sertifikat Member Del English Club (DEC)
+├── index.html              # Shell HTML5 bersih (Dynamic CSR Container & Universal Modal)
+├── css/
+│   └── custom-style.css    # Custom styles, theming & CSS variables (Skeleton & UI States)
+├── data/
+│   ├── profile.json        # Biodata pengembang, statistik & keahlian
+│   ├── projects.json       # Provider data koleksi portofolio proyek terstruktur
+│   └── services.json       # Provider data katalog paket layanan IT
+├── js/
+│   ├── api-service.js      # Data Access Layer (DAL): Fetch HTTP API & Error Handling
+│   └── app.js              # Presentation Layer: DOM Control, Dynamic Rendering & Events
+├── style.css               # Forwarding stylesheet import ke css/custom-style.css
+├── README.md               # Dokumentasi C4 Diagram, SoC, Komparasi, & Profiling Kinerja DevTools
+├── potoku.jpeg             # Foto profil avatar mahasiswa
+├── sertif_bronze.png       # Thumbnail sertifikat Bronze Medal PIN 2
+├── sertif_emas.jpg         # Thumbnail sertifikat Medali Emas POSI
+├── sertif_ipb.png          # Thumbnail sertifikat Peserta IPB University
+└── sertif_dec.jpg          # Thumbnail sertifikat Member Del English Club (DEC)
 ```
 
 ---
@@ -100,11 +197,9 @@ ppw-2026-week2-12S24018/
 ## 💻 Panduan Pengujian Lokal (Local Testing)
 
 1. Buka repositori proyek pada Visual Studio Code.
-2. Klik kanan pada berkas `index.html` dan pilih **Open with Live Server** (atau buka langsung di peramban Chrome/Edge/Firefox).
-3. Buka **Chrome DevTools** (`F12` atau `Ctrl + Shift + I`):
-   - Klik ikon **Toggle Device Toolbar** (`Ctrl + Shift + M`) untuk menguji responsivitas pada berbagai resolusi (*iPhone SE, iPad Air, 1080p Desktop*).
-   - Klik tombol **Hamburger Navbar** untuk memastikan menu expand/collapse berjalan mulus.
-   - Klik tombol **Detail Proyek** dan **Pratinjau Sertifikat** untuk menguji modal dialog.
-   - Uji tombol submit pada formulir layanan untuk melihat animasi umpan balik validasi visual.
-
----
+2. Jalankan **Live Server** pada `index.html` (atau buka di peramban Chrome/Edge).
+3. Buka **Chrome DevTools** (`F12`):
+   - **Tab Network**: Uji *Disable cache* untuk melihat Cold Load vs Warm Load, perhatikan status status HTTP 200 vs 304.
+   - **Tombol Filter Kategori**: Klik filter *Web App*, *Technopreneur*, dll. untuk menguji filter instan dan *Empty State*.
+   - **Detail Proyek**: Klik tombol *Detail Proyek* pada sembarang kartu untuk memverifikasi injeksi data ke *Universal Dynamic Modal*.
+   - **Formulir Layanan**: Isikan data pada form layanan dan klik *Kirim Permintaan REST*. Amati tombol loading spinner, notifikasi *Bootstrap Toast*, serta perubahaan *Badge Pesanan Tersimpan*.

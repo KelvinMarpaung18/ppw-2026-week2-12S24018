@@ -1,0 +1,58 @@
+[
+  {
+    "id": "uiux",
+    "title": "UI/UX Design & High-Fidelity Prototype",
+    "icon": "bi-palette",
+    "badge": "Desain Antarmuka",
+    "price": "Rp 1.500.000 / Proyek",
+    "description": "Perancangan wireframe, design system terpadu, dan prototipe interaktif Figma berbasis User-Centered Design (UCD) & kepatuhan WCAG 2.2 AA.",
+    "features": [
+      "User Persona & Journey Mapping",
+      "Wireframing Low & High Fidelity",
+      "Interactive Figma Prototype",
+      "Usability Testing & Accessibility Audit"
+    ]
+  },
+  {
+    "id": "frontend",
+    "title": "Front-End Web Development (Dynamic CSR & Bootstrap 5)",
+    "icon": "bi-code-slash",
+    "badge": "Pemrograman Web",
+    "price": "Rp 2.500.000 / Proyek",
+    "description": "Pengembangan web front-end modern berarsitektur Decoupled CSR menggunakan JavaScript (ES6+ fetch/async), Bootstrap 5.3, & CSS variables.",
+    "features": [
+      "Decoupled JSON Data Provider Layer",
+      "Universal Dynamic Modal Component",
+      "Async Form Dispatching & Local Persistence",
+      "Optimasi Performa Web DevTools (FCP/TTFB)"
+    ]
+  },
+  {
+    "id": "analisis",
+    "title": "Analisis Kebutuhan Sistem & Pemodelan BPMN",
+    "icon": "bi-diagram-3",
+    "badge": "Analisis Sistem",
+    "price": "Rp 1.800.000 / Proyek",
+    "description": "Penyusunan spesifikasi kebutuhan perangkat lunak (SRS/SKPL), pemodelan alur bisnis BPMN 2.0 (As-Is & To-Be), dan rancangan basis data ERD.",
+    "features": [
+      "Analisis Alur Kerja Bisnis As-Is & To-Be",
+      "Pemodelan Standar BPMN 2.0 & UML Diagram",
+      "Desain Skema Basis Data ERD & Relasional",
+      "Dokumentasi SRS / SKPL Terstandarisasi"
+    ]
+  },
+  {
+    "id": "fullstack",
+    "title": "Konsultasi & Pengujian Aksesibilitas WCAG 2.2",
+    "icon": "bi-universal-access",
+    "badge": "Pengujian & Audit",
+    "price": "Rp 1.200.000 / Proyek",
+    "description": "Audit aksesibilitas antarmuka pengguna, validasi kecukupan kontras warna, pembaca layar (screen reader compatibility), dan navigasi papan ketik.",
+    "features": [
+      "Audit Aksesibilitas WCAG 2.2 AA",
+      "Pengujian Navigasi Keyboard & ARIA Labels",
+      "Optimasi Responsivitas Multi-Device",
+      "Laporan Rekomendasi Perbaikan UX"
+    ]
+  }
+]

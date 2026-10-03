@@ -1,0 +1,90 @@
+[
+  {
+    "id": "proj-1",
+    "title": "DelOlympic Competition Portal",
+    "category": "Web App",
+    "shortDescription": "Platform manajemen kompetisi olimpiade terpadu untuk pendaftaran, penjadwalan, dan perolehan skor langsung mahasiswa.",
+    "fullDescription": "DelOlympic adalah sistem informasi kompetisi dan olimpiade berbasis web yang memfasilitasi mahasiswa Institut Teknologi Del dalam mendaftar berbagai cabang perlombaan akademik dan non-akademik, memantau jadwal pertandingan secara real-time, serta melihat papan peringkat skor terkini secara otomatis.",
+    "icon": "bi-trophy",
+    "headerBgClass": "bg-primary",
+    "badgeClass": "bg-light text-dark",
+    "tags": ["HTML5/CSS3", "Bootstrap 5", "PHP Native", "REST JSON"],
+    "thumbnail": "sertif_bronze.png",
+    "metrics": "500+ Active Users • Real-time Leaderboard",
+    "features": [
+      "Autentikasi akun peserta dan panitia berbasis multi-role.",
+      "Manajemen pendaftaran tim dan verifikasi berkas daring.",
+      "Papan skor interaktif dengan pembaruan dinamis.",
+      "Desain antarmuka responsif berstandar Bootstrap 5.3."
+    ],
+    "techStack": ["Bootstrap 5.3", "CSS Custom Properties", "PHP Native & MySQL", "Bootstrap Icons"],
+    "repoUrl": "https://github.com/KelvinMarpaung18/ppw-2026-week2-12S24018",
+    "demoUrl": "https://kelvinmarpaung18.github.io/ppw-2026-week2-12S24018/"
+  },
+  {
+    "id": "proj-2",
+    "title": "TobaSatSet Service Solution",
+    "category": "Technopreneur",
+    "shortDescription": "Aplikasi jasa antar dan layanan lokal kawasan Toba yang menghubungkan UMKM dengan konsumen kampus secara instan.",
+    "fullDescription": "TobaSatSet adalah platform layanan terpadu yang dirancang untuk mengatasi permasalahan mobilitas dan akses pemesanan makanan serta kebutuhan pokok di lingkungan kampus IT Del dan sekitarnya di kawasan Danau Toba.",
+    "icon": "bi-shop",
+    "headerBgClass": "project-header-teal",
+    "badgeClass": "bg-light text-dark",
+    "tags": ["UI/UX Design", "Business Plan", "Front-End", "Fetch API"],
+    "thumbnail": "sertif_emas.jpg",
+    "metrics": "15+ Mitra UMKM • Fast Delivery",
+    "features": [
+      "Katalog menu interaktif dari mitra warung makan dan toko lokal.",
+      "Kalkulator ongkos kirim transparan berbasis jarak kampus.",
+      "Integrasi notifikasi pesan instan WhatsApp Gateway.",
+      "Visualisasi status pemesanan real-time."
+    ],
+    "techStack": ["Figma UI Prototype", "HTML5 Semantik", "Modern CSS Grid/Flex", "JavaScript Async"],
+    "repoUrl": "https://github.com/KelvinMarpaung18/ppw-2026-week2-12S24018",
+    "demoUrl": "https://kelvinmarpaung18.github.io/ppw-2026-week2-12S24018/"
+  },
+  {
+    "id": "proj-3",
+    "title": "SI Loket PT Parisma Jaya Trans Balige",
+    "category": "Enterprise SI",
+    "shortDescription": "Perancangan dan pemodelan sistem informasi manajemen pemesanan tiket bus dan kargo PT Parisma Jaya Trans Balige.",
+    "fullDescription": "Proyek analisis dan perancangan sistem informasi loket transportasi antarkota PT Parisma Jaya Trans di Balige. Merumuskan alur bisnis pemesanan tiket, pengelolaan armada bus, pembagian kursi otomatis, dan pencatatan manifest kargo barang.",
+    "icon": "bi-bus-front",
+    "headerBgClass": "project-header-indigo",
+    "badgeClass": "bg-light text-dark",
+    "tags": ["Anaprancis", "BPMN 2.0", "Database Design", "SRS Spec"],
+    "thumbnail": "sertif_ipb.png",
+    "metrics": "Enterprise Scalability • Zero Bottleneck",
+    "features": [
+      "Diagram BPMN 2.0 proses bisnis As-Is & To-Be.",
+      "Dokumen spesifikasi kebutuhan perangkat lunak (SKPL/SRS).",
+      "Diagram Entity Relationship (ERD) dan Logical Relational Structure.",
+      "Rancangan antarmuka kasir loket berbasis web cepat."
+    ],
+    "techStack": ["BPMN 2.0 Visualizer", "ERD Modeler", "HTML5/CSS3", "System Specs Documentation"],
+    "repoUrl": "https://github.com/KelvinMarpaung18/ppw-2026-week2-12S24018",
+    "demoUrl": "https://kelvinmarpaung18.github.io/ppw-2026-week2-12S24018/"
+  },
+  {
+    "id": "proj-4",
+    "title": "Aplikasi Jadwal Imunisasi Anak Indonesia",
+    "category": "HealthTech UI",
+    "shortDescription": "Desain antarmuka aplikasi pemantauan dan pengingat jadwal vaksinasi berkala balita Indonesia berbasis pedoman IDAI.",
+    "fullDescription": "Perancangan pengalaman pengguna untuk membantu orang tua Indonesia mencatat riwayat vaksinasi bayi dan balita secara akurat sesuai anjuran Ikatan Dokter Anak Indonesia (IDAI), dilengkapi sistem peringatan dini jadwal posyandu/puskesmas terdekat.",
+    "icon": "bi-heart-pulse",
+    "headerBgClass": "project-header-purple",
+    "badgeClass": "bg-light text-dark",
+    "tags": ["Figma Design", "UX Research", "Design System", "WCAG 2.2 AA"],
+    "thumbnail": "sertif_dec.jpg",
+    "metrics": "85% Usability Score • IDAI Standard",
+    "features": [
+      "Desain antarmuka ramah ibu dan anak dengan palet warna pastel menenangkan.",
+      "Tingkat keterbacaan tinggi dan navigasi satu tangan yang ergonomis.",
+      "Prototyping interaktif dengan pengujian usability testing 85% kepuasan pengguna.",
+      "Kompatibilitas WCAG 2.2 AA untuk kontras tinggi."
+    ],
+    "techStack": ["Figma Prototype", "User Centered Design (UCD)", "Accessibility Color Matrix", "Design Tokens"],
+    "repoUrl": "https://github.com/KelvinMarpaung18/ppw-2026-week2-12S24018",
+    "demoUrl": "https://kelvinmarpaung18.github.io/ppw-2026-week2-12S24018/"
+  }
+]

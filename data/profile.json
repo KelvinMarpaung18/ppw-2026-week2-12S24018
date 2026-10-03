@@ -1,0 +1,48 @@
+{
+  "name": "Kelvin Yohanes Putra",
+  "nim": "12S24018",
+  "programStudy": "Sarjana Sistem Informasi",
+  "class": "13SI1",
+  "faculty": "Fakultas Informatika dan Teknik Elektro (FITE)",
+  "institution": "Institut Teknologi Del",
+  "role": "Mahasiswa Sistem Informasi • UI/UX & Web Developer",
+  "availability": "Available for Freelance & Academic Projects",
+  "bio": "Mahasiswa S1 Sistem Informasi di Institut Teknologi Del yang berdedikasi memadukan keahlian analisis sistem informasi, perancangan antarmuka pengguna interaktif (UI/UX), dan modern front-end web development menggunakan ekosistem Bootstrap 5 & CSS modern untuk menghadirkan solusi teknologi terukur.",
+  "metrics": [
+    {
+      "id": "m1",
+      "label": "Proyek Diselesaikan",
+      "value": "5+ Proyek Teruji",
+      "icon": "bi-lightning-charge-fill",
+      "color": "primary",
+      "accent": "blue"
+    },
+    {
+      "id": "m2",
+      "label": "Prestasi & Sertifikat",
+      "value": "4 Penghargaan & Sertifikat",
+      "icon": "bi-trophy-fill",
+      "color": "warning",
+      "accent": "blue"
+    }
+  ],
+  "coreCompetencies": [
+    "Responsive Web Design",
+    "Bootstrap 5.3 Framework",
+    "CSS Architecture & Variables",
+    "Dynamic Client-Side Rendering (CSR)",
+    "UI/UX Prototyping",
+    "System Analysis (BPMN)"
+  ],
+  "academicFocus": [
+    "Analisis & Perancangan Sistem Informasi Terintegrasi",
+    "Pengembangan Aplikasi Web Interaktif berstandar WCAG 2.2 AA",
+    "Optimasi Desain Antarmuka Responsif & Pengujian Fungsional"
+  ],
+  "contact": {
+    "whatsapp": "081361507704",
+    "email": "yohaneskelvin9@gmail.com",
+    "github": "KelvinMarpaung18",
+    "linkedin": "Kelvin Yohanes Putra"
+  }
+}
