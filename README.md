@@ -1,4 +1,4 @@
-# Modernisasi Arsitektur Web Kontemporer: Decoupled Multi-Tier, Dynamic Client-Side Rendering (CSR), dan Network Performance Profiling
+﻿# Modernisasi Arsitektur Web Kontemporer: Decoupled Multi-Tier, Dynamic Client-Side Rendering (CSR), dan Network Performance Profiling
 
 > **Mata Kuliah**: Pemrograman dan Pengujian Web (12S3101)  
 > **Modul Praktikum**: Minggu 04 – Konsep Dasar Arsitektur Aplikasi Web Kontemporer  
@@ -7,7 +7,7 @@
 
 ---
 
-## 👨‍🎓 Identitas Mahasiswa Pengembang
+## Identitas Mahasiswa Pengembang
 
 | Parameter | Data Mahasiswa |
 |---|---|
@@ -22,7 +22,7 @@
 
 ---
 
-## 🏛️ Pemodelan Arsitektur Web & C4 Container Diagram
+## Pemodelan Arsitektur Web & C4 Container Diagram
 
 Aplikasi web minggu ke-4 ini mengalami transformasi fundamental dari **Arsitektur Monolitik Statis** (di mana HTML, teks data, dan modal ditulis keras di `index.html`) menjadi **Arsitektur Kontemporer Berkonsep Decoupled Multi-Tier & Dynamic Client-Side Rendering (CSR)**.
 
@@ -88,7 +88,7 @@ Penerapan *Separation of Concerns* (SoC) membagi aplikasi menjadi 3 lapisan inde
 
 ---
 
-## 📊 Tabel Komparasi Komprehensif: Sebelum vs Sesudah Refactoring Arsitektural
+## Tabel Komparasi Komprehensif: Sebelum vs Sesudah Refactoring Arsitektural
 
 Berikut adalah matriks evaluasi perbandingan arsitektur aplikasi antara Minggu 3 dan Minggu 4:
 
@@ -103,7 +103,7 @@ Berikut adalah matriks evaluasi perbandingan arsitektur aplikasi antara Minggu 3
 
 ---   
 
-## 📈 Network Performance Profiling & DevTools Analysis (RFC 9111)
+## Network Performance Profiling & DevTools Analysis (RFC 9111)
 
 Pengujian kinerja jaringan dilakukan melalui **Chrome DevTools - Tab Network** pada kondisi jaringan teridentifikasi:
 
@@ -111,12 +111,12 @@ Pengujian kinerja jaringan dilakukan melalui **Chrome DevTools - Tab Network** p
 
 | Indikator Performa DevTools | Cold Load (Disertai Empty Cache) | Warm Load (Dengan Active Caching) | Persentase Efisiensi / Optimasi |
 |---|---|---|---|
-| **Finish Time** | ~420 ms | ~110 ms | 🚀 **73.8% Lebih Cepat** |
-| **DOMContentLoaded** | ~280 ms | ~85 ms | ⚡ **69.6% Lebih Cepat** |
-| **Load Time** | ~390 ms | ~105 ms | ⏩ **73.0% Lebih Cepat** |
-| **Time to First Byte (TTFB)** | ~35 ms | ~8 ms | 🏎️ **77.1% Lebih Cepat** |
-| **Transferred Data Size** | ~1.2 MB | ~2.4 KB (HTTP 304 / Cache) | 📉 **99.8% Hemat Bandwidth** |
-| **Total Resource Uncompressed** | ~1.5 MB | ~1.5 MB | 🔄 Konsisten (Memory / Disk Cache) |
+| **Finish Time** | ~420 ms | ~110 ms |  **73.8% Lebih Cepat** |
+| **DOMContentLoaded** | ~280 ms | ~85 ms |  **69.6% Lebih Cepat** |
+| **Load Time** | ~390 ms | ~105 ms |  **73.0% Lebih Cepat** |
+| **Time to First Byte (TTFB)** | ~35 ms | ~8 ms |  **77.1% Lebih Cepat** |
+| **Transferred Data Size** | ~1.2 MB | ~2.4 KB (HTTP 304 / Cache) |  **99.8% Hemat Bandwidth** |
+| **Total Resource Uncompressed** | ~1.5 MB | ~1.5 MB |  Konsisten (Memory / Disk Cache) |
 
 ### 2. Analisis HTTP 304 Not Modified & Caching RFC 9111
 
@@ -131,19 +131,19 @@ Pengujian kinerja jaringan dilakukan melalui **Chrome DevTools - Tab Network** p
 
 ---
 
-## ✨ Kepatuhan Indikator Ketercapaian Modul Minggu 04 (Checklist 100%)
+## Kepatuhan Indikator Ketercapaian Modul Minggu 04 (Checklist 100%)
 
-### 1. 🏗️ Pemodelan Arsitektur Web (Bobot 15%)
+### 1.  Pemodelan Arsitektur Web (Bobot 15%)
 - ✅ Terlampir Diagram Arsitektur C4 Container Model lengkap berbasis Mermaid.js.
 - ✅ Terlampir narasi ilmiah *Separation of Concerns* (Presentation Tier, Application/DAL Tier, Data Tier).
 
-### 2. 🗃️ Dekomposisi Data Layer JSON (Bobot 20%)
+### 2.  Dekomposisi Data Layer JSON (Bobot 20%)
 - ✅ Seluruh data dipindahkan ke direktori `/data/`:
   - `data/projects.json` (4 proyek lengkap dengan metrics, tags, image, link, features, tech stack).
   - `data/services.json` (4 paket layanan IT terstruktur).
   - `data/profile.json` (biodata pengembang & statistik performa).
 
-### 3. ⚡ Dynamic CSR & UI States Management (Bobot 25%)
+### 3.  Dynamic CSR & UI States Management (Bobot 25%)
 - ✅ `index.html` bersih dari kartu hardcoded; data dimuat via `js/api-service.js` & `js/app.js`.
 - ✅ Mengelola 4 UI States dengan sempurna:
   1. **Loading State**: Animasi skeleton shimmer saat data sedang dimuat.
@@ -152,24 +152,24 @@ Pengujian kinerja jaringan dilakukan melalui **Chrome DevTools - Tab Network** p
   4. **Error Fallback Alert**: Alert defensif dengan tombol retry ketika pemanggilan fetch gagal.
 - ✅ Filter Kategori Proyek berfungsi instan (*Semua Proyek, Web App, Technopreneur, Enterprise SI, HealthTech UI*).
 
-### 4. 🪟 Universal Dynamic Modal (Bobot 15%)
+### 4.  Universal Dynamic Modal (Bobot 15%)
 - ✅ Tepat **1 elemen modal universal** (`#universalProjectModal`) di dalam `index.html`.
 - ✅ Injeksi data dinamis berbasis `data-id` via `openUniversalProjectModal(projectId)`.
 - ✅ Aman dari kerentanan DOM-based Cross-Site Scripting (XSS) dengan helper `escapeHTML()`.
 
-### 5. 📬 Decoupled Form REST & Local State (Bobot 15%)
+### 5.  Decoupled Form REST & Local State (Bobot 15%)
 - ✅ Formulir dikirim secara asinkron murni (AJAX/Fetch POST) tanpa full page reload.
 - ✅ Status tombol submit responsif (*spinner animation* & disabled state saat request).
 - ✅ Umpan balik visual interaktif menggunakan **Bootstrap Toast Notification**.
 - ✅ Data pesanan disimpan secara persisten di `localStorage` dan ditampilkan pada **Order Count Badge** UI.
 
-### 6. 📊 Network Profiling DevTools (Bobot 10%)
+### 6.  Network Profiling DevTools (Bobot 10%)
 - ✅ Tabel komparasi Cold Load vs Warm Load disajikan secara presisi.
 - ✅ Analisis HTTP 304 Not Modified, TTFB, dan hierarki DevTools Waterfall dijelaskan secara rinci.
 
 ---
 
-## 📁 Struktur Berkas Proyek Minggu 04 (Terstandarisasi)
+## Struktur Berkas Proyek Minggu 04 (Terstandarisasi)
 
 ```text
 ppw-2026-week2-12S24018/
@@ -194,7 +194,7 @@ ppw-2026-week2-12S24018/
 
 ---
 
-## 💻 Panduan Pengujian Lokal (Local Testing)
+## Panduan Pengujian Lokal (Local Testing)
 
 1. Buka repositori proyek pada Visual Studio Code.
 2. Jalankan **Live Server** pada `index.html` (atau buka di peramban Chrome/Edge).
