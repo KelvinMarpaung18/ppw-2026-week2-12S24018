@@ -1,4 +1,4 @@
-# Modernisasi Arsitektur Web Kontemporer: Decoupled Multi-Tier, Dynamic Client-Side Rendering (CSR), dan Network Performance Profiling
+﻿# Modernisasi Arsitektur Web Kontemporer: Decoupled Multi-Tier, Dynamic Client-Side Rendering (CSR), dan Network Performance Profiling
 
 > **Mata Kuliah**: Pemrograman dan Pengujian Web (12S3101)  
 > **Modul Praktikum**: Minggu 04 – Konsep Dasar Arsitektur Aplikasi Web Kontemporer  
@@ -114,10 +114,10 @@ Pengujian kinerja jaringan dilakukan melalui **Chrome DevTools - Tab Network** p
 
 | Indikator Performa DevTools | Cold Load (Disertai Empty Cache) | Warm Load (Dengan Active Caching) | Persentase Efisiensi / Optimasi |
 |---|---|---|---|
-| **Finish Time** | ~4.18 s | ~346 ms | 🚀 **91.7% Lebih Cepat** |
-| **DOMContentLoaded** | ~2.48 s | ~330 ms | ⚡ **86.7% Lebih Cepat** |
-| **Transferred Data Size** | ~233 KB | ~143 B (Disk/Memory Cache) | 📉 **99.9% Hemat Bandwidth** |
-| **Total Resource Uncompressed** | ~630 KB | ~2.3 MB | 🔄 Konsisten (Disk/Memory Cache) |
+| **Finish Time** | ~4.18 s | ~346 ms |  **91.7% Lebih Cepat** |
+| **DOMContentLoaded** | ~2.48 s | ~330 ms |  **86.7% Lebih Cepat** |
+| **Transferred Data Size** | ~233 KB | ~143 B (Disk/Memory Cache) |  **99.9% Hemat Bandwidth** |
+| **Total Resource Uncompressed** | ~630 KB | ~2.3 MB |  Konsisten (Disk/Memory Cache) |
 
 ### 2. Bukti Tangkapan Layar (Screenshot Valid Chrome DevTools Network)
 
