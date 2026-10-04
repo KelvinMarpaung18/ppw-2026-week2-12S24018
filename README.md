@@ -1,4 +1,4 @@
-﻿# Modernisasi Arsitektur Web Kontemporer: Decoupled Multi-Tier, Dynamic Client-Side Rendering (CSR), dan Network Performance Profiling
+# Modernisasi Arsitektur Web Kontemporer: Decoupled Multi-Tier, Dynamic Client-Side Rendering (CSR), dan Network Performance Profiling
 
 > **Mata Kuliah**: Pemrograman dan Pengujian Web (12S3101)  
 > **Modul Praktikum**: Minggu 04 – Konsep Dasar Arsitektur Aplikasi Web Kontemporer  
@@ -114,10 +114,10 @@ Pengujian kinerja jaringan dilakukan melalui **Chrome DevTools - Tab Network** p
 
 | Indikator Performa DevTools | Cold Load (Disertai Empty Cache) | Warm Load (Dengan Active Caching) | Persentase Efisiensi / Optimasi |
 |---|---|---|---|
-| **Finish Time** | ~2.05 s | ~85 ms | **95.8% Lebih Cepat** |
-| **DOMContentLoaded** | ~1.10 s | ~69 ms |  **93.7% Lebih Cepat** |
-| **Transferred Data Size** | ~1.9 MB | ~2.9 KB (Memory Cache) |  **99.8% Hemat Bandwidth** |
-| **Total Resource Uncompressed** | ~2.3 MB | ~2.3 MB |  Konsisten (Disk/Memory Cache) |
+| **Finish Time** | ~4.18 s | ~346 ms | 🚀 **91.7% Lebih Cepat** |
+| **DOMContentLoaded** | ~2.48 s | ~330 ms | ⚡ **86.7% Lebih Cepat** |
+| **Transferred Data Size** | ~233 KB | ~143 B (Disk/Memory Cache) | 📉 **99.9% Hemat Bandwidth** |
+| **Total Resource Uncompressed** | ~630 KB | ~2.3 MB | 🔄 Konsisten (Disk/Memory Cache) |
 
 ### 2. Bukti Tangkapan Layar (Screenshot Valid Chrome DevTools Network)
 
@@ -129,9 +129,9 @@ Pengujian kinerja jaringan dilakukan melalui **Chrome DevTools - Tab Network** p
 
 ### 3. Analisis HTTP 304 Not Modified & Caching RFC 9111
 
-1. **Pengujian Status HTTP 304 Not Modified & Memory Cache**:
-   - Pada pemuatan kedua (*Warm Load*), peramban meng-cache aset statis sehingga payload yang dikirim berkurang drastis dari **1.9 MB** menjadi **2.9 KB** saja.
-   - Karena aset static (`custom-style.css`, `api-service.js`, `app.js`, dan gambar) tidak mengalami perubahan sidik jari (hash), peramban menyajikannya langsung dari *memory cache*, mengeliminasi latensi transmisi jaringan hingga 99.8%.
+1. **Pengujian Status HTTP 304 Not Modified & Memory/Disk Cache**:
+   - Pada pemuatan kedua (*Warm Load*), peramban meng-cache aset statis sehingga payload yang dikirim berkurang drastis dari **233 KB** menjadi **143 Bytes** saja.
+   - Karena aset static (`custom-style.css`, `api-service.js`, `app.js`, `projects.json`, `services.json`, dan gambar) tidak mengalami perubahan sidik jari (hash), peramban menyajikannya langsung dari *disk/memory cache* dalam hitungan **2–5 ms**, mengeliminasi latensi transmisi jaringan hingga 99.9%.
 
 2. **Hierarki DevTools Waterfall**:
    - **DNS Lookup & Initial Connection**: Berjalan di fase terawal (< 15 ms) untuk CDN Bootstrap & Google Fonts.
